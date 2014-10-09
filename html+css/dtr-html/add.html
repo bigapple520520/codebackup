@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>DTR管理平台</title>
+<!--                       CSS                       -->
+<!-- Reset Stylesheet -->
+<link rel="stylesheet" href="resources/css/reset.css" type="text/css" media="screen" />
+<!-- Main Stylesheet -->
+<link rel="stylesheet" href="resources/css/style.css" type="text/css" media="screen" />
+<!-- Invalid Stylesheet. This makes stuff look pretty. Remove it if you want the CSS completely valid -->
+<link rel="stylesheet" href="resources/css/invalid.css" type="text/css" media="screen" />
+<!--                       Javascripts                       -->
+<!-- jQuery -->
+<script type="text/javascript" src="resources/scripts/jquery-1.3.2.min.js"></script>
+<!-- jQuery Configuration -->
+<script type="text/javascript" src="resources/scripts/simpla.jquery.configuration.js"></script>
+<!-- Facebox jQuery Plugin -->
+<script type="text/javascript" src="resources/scripts/facebox.js"></script>
+<!-- jQuery WYSIWYG Plugin -->
+<script type="text/javascript" src="resources/scripts/jquery.wysiwyg.js"></script>
+<!-- jQuery Datepicker Plugin -->
+<script type="text/javascript" src="resources/scripts/jquery.datePicker.js"></script>
+<script type="text/javascript" src="resources/scripts/jquery.date.js"></script>
+</head>
+<body>
+<div id="body-wrapper">
+	<!--START 菜单栏-->
+	<div id="sidebar">
+		<div id="sidebar-wrapper">
+			<h1 id="sidebar-title"><a href="#">DTR管理平台</a></h1>
+			<a href="#"><img id="logo" src="resources/images/logo.png" /></a>
+			<div id="profile-links"><a href="welcome.html">到欢迎界面</a> | <a href="login.html">退出登录</a> </div>
+			<ul id="main-nav">
+				<li><a href="welcome.html" class="nav-top-item no-submenu">欢迎界面</a></li>
+				<li><a href="add.html" class="nav-top-item no-submenu current">上传</a></li>
+				<li><a href="list.html" class="nav-top-item no-submenu">查询</a></li>
+				<li><a href="detail.html" class="nav-top-item unusable">明细</a></li>
+			</ul>
+		</div>
+	</div>
+	<!--END 菜单栏-->
+
+	<!--START 主界面-->
+	<div id="main-content">
+		<p id="page-intro"><a href="welcome.html">首页</a> / 上传</p>
+		
+		<div class="notification success png_bg"> <div>成功提示信息！</div></div>
+		<div class="notification error png_bg"> <div>错误提示信息！</div></div>
+		
+		<div class="content-box">
+			<div class="content-box-header">
+				<h3>请填写信息传递单</h3>
+			</div>
+			
+			<!--START 表单部分-->
+			<div class="content-box-content">
+				<div class="tab-content default-tab">
+					<form action="#" method="post">
+						<center><h2>广汽吉奥市场信息传递单（DTR）</h2></center>
+						<label style="float:right;">反馈单号：20140811001</label>
+						<br />
+						<input type="checkbox" />故障报告书
+						<input type="checkbox" />技术支援单
+						<br />
+						<br />
+						<br />
+						<table>
+							<tr>
+								<td>服务网点名称：<input type="type" class="text-input small-input" /></td>
+								<td>报告编码：<input type="type" /></td>
+								<td>报告日期（年/月/日）：<input type="type" /></td>
+								<td>报告人：<input type="type" /></td>
+							</tr>
+							<tr>
+								<td>车型：<input type="type" /></td>
+								<td>VIN号：<input type="type" /></td>
+								<td>发动机号码：<input type="type" /></td>
+								<td>行驶里程：<input type="type" /></td>
+							</tr>
+							<tr>
+								<td>生产日期（年/月）：<input type="type" /></td>
+								<td>购车日期（年/月/日）：<input type="type" /></td>
+								<td>故障日期（年/月/日）：<input type="type" /></td>
+								<td>修理日期（年/月/日）：<input type="type" /></td>
+							</tr>
+							<tr>
+								<td>用户名称：<input type="type" /></td>
+								<td colspan="2">用户地址：<input type="type" style="width:400px;"/></td>
+								<td>用户联系电话：<input type="type" /></td>
+							</tr>
+						<table/>
+						
+						<p>
+						故障描述：
+						<textarea class="multi-line-input"></textarea>
+						</p>
+						
+						<p>
+						故障原因：
+						<textarea class="multi-line-input"></textarea>
+						</p>
+						
+						<p>
+						修理内容：
+						<textarea class="multi-line-input"></textarea>
+						</p>
+						
+						<p>
+						建议意见：
+						<textarea class="multi-line-input"></textarea>
+						</p>
+						
+						<p>
+						保养状况：
+						<input type="radio" />优&nbsp;&nbsp;
+						<input type="radio" />良&nbsp;&nbsp;
+						<input type="radio" />中&nbsp;&nbsp;
+						<input type="radio" />差
+						</p>
+						
+						<p>
+						使用环境：
+						室内<input type="text" style="width:40px;" />%&nbsp;&nbsp;
+						郊外<input type="text" style="width:40px;" />%&nbsp;&nbsp;
+						铺装路<input type="text" style="width:40px;" />%&nbsp;&nbsp;
+						未铺装路<input type="text" style="width:40px;" />%&nbsp;&nbsp;
+						山路<input type="text" style="width:40px;" />%&nbsp;&nbsp
+						其他：<input type="text" style="width:80px;" />
+						</p>
+						
+						<hr />
+						
+						<p>
+						<h5>出现故障时：</h5>
+						</p>
+						
+						<p>
+						气温：<input type="text" style="width:40px;" />℃
+						</p>
+						
+						<p>
+						车辆：
+						<input type="checkbox" />启动&nbsp;&nbsp;
+						<input type="checkbox" />怠速&nbsp;&nbsp;
+						<input type="checkbox" />加速&nbsp;&nbsp;
+						<input type="checkbox" />制动&nbsp;&nbsp;
+						<input type="checkbox" />冷车&nbsp;&nbsp;
+						<input type="checkbox" />热车&nbsp;&nbsp;
+						<input type="checkbox" />空车&nbsp;&nbsp;
+						<input type="checkbox" />半载&nbsp;&nbsp;
+						<input type="checkbox" />满载&nbsp;&nbsp;
+						</p>
+						
+						<p>
+						测速行驶（<input type="text" style="width:40px;" />km/h）&nbsp;&nbsp;
+						发动机转速<input type="text" style="width:40px;" />RPM &nbsp;&nbsp;
+						其他：<input type="text" style="width:80px;" />
+						</p>
+						
+						<p>
+						环境路面：
+						<input type="checkbox" />平坦&nbsp;&nbsp;
+						<input type="checkbox" />积水&nbsp;&nbsp;
+						<input type="checkbox" />积雪&nbsp;&nbsp;
+						<input type="checkbox" />结冰&nbsp;&nbsp;
+						<input type="checkbox" />凹凸&nbsp;&nbsp;
+						<input type="checkbox" />上坡&nbsp;&nbsp;
+						<input type="checkbox" />下坡&nbsp;&nbsp;
+						其他：<input type="text" style="width:80px;" />
+						</p>
+						
+						<p>
+						零件处置：
+						<input type="radio" />保管&nbsp;&nbsp
+						<input type="radio" />寄出（日期<input type="text"  style="width:80px;"/>）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" />装车&nbsp;&nbsp
+						<input type="radio" />废弃&nbsp;&nbsp
+						<input type="radio" />以件换件&nbsp;&nbsp
+						</p>
+						
+						<p>
+						原始损坏零件编号<input type="text" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						工位代码<input type="text" />
+						</p>
+						
+						<p>
+						<center>
+						<input class="button" type="submit" value="提交" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input class="button" type="button" value="重置" />
+						</center>
+						</p>
+					</form>
+				</div>
+			</div>
+			<!--END 表单部分-->
+        </div>
+		<div class="clear"></div>
+		<div id="footer"><small>&#169; Copyright 2014 &nbsp;&nbsp;&nbsp;&nbsp;广汽吉奥</small></div>
+	</div>
+	<!--END 主界面-->
+</div>
+</body>
+</html>
