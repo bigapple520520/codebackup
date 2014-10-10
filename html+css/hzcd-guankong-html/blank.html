@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>登录页</title>
-<meta name="description" content="Administry - Admin Template by www.865171.cn" />
-<meta name="keywords" content="Admin,Template" />
+<title>火灾检测</title>
+<!-- We need to emulate IE7 only when we are to use excanvas -->
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<![endif]-->
 <!-- Favicons --> 
 <link rel="shortcut icon" type="image/png" HREF="img/favicons/favicon.png"/>
 <link rel="icon" type="image/png" HREF="img/favicons/favicon.png"/>
@@ -38,6 +40,9 @@ Default colour scheme is blue. Uncomment prefered stylesheet to use it.
 <script type="text/javascript" SRC="js/jquery.validate_pack.js"></script>
 <!-- jQuery popup box -->
 <script type="text/javascript" SRC="js/jquery.nyroModal.pack.js"></script>
+<!-- jQuery graph plugins -->
+<!--[if IE]><script type="text/javascript" src="js/flot/excanvas.min.js"></script><![endif]-->
+<script type="text/javascript" SRC="js/flot/jquery.flot.min.js"></script>
 <!-- Internet Explorer Fixes --> 
 <!--[if IE]>
 <link rel="stylesheet" type="text/css" media="all" href="css/ie.css"/>
@@ -48,32 +53,35 @@ Default colour scheme is blue. Uncomment prefered stylesheet to use it.
 <script src="js/IE8.js"></script>
 <![endif]-->
 <script type="text/javascript">
-
 $(document).ready(function(){
 	
 	/* setup navigation, content boxes, etc... */
 	Administry.setup();
 	
-	// validate signup form on keyup and submit
-	var validator = $("#loginform").validate({
-		rules: {
-			username: "required",
-			password: "required"
-		},
-		messages: {
-			username: "Enter your username",
-			password: "Provide your password"
-		},
-		// the errorPlacement has to take the layout into account
-		errorPlacement: function(error, element) {
-			error.insertAfter(element.parent().find('label:first'));
-		},
-		// set new class to error-labels to indicate valid fields
-		success: function(label) {
-			// set &nbsp; as text for IE
-			label.html("&nbsp;").addClass("ok");
-		}
-	});
+	/* progress bar animations - setting initial values */
+	Administry.progress("#progress1", 1, 5);
+	Administry.progress("#progress2", 2, 5);
+	Administry.progress("#progress3", 2, 5);
+
+	/* flot graphs */
+	var sales = [{
+		label: 'Total Paid',
+		data: [[1, 0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,900],[8,0],[9,0],[10,0],[11,0],[12,0]]
+	},{
+		label: 'Total Due',
+		data: [[1, 0],[2,0],[3,0],[4,0],[5,0],[6,422.10],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0]]
+	}
+	];
+
+	var plot = $.plot($("#placeholder"), sales, {
+		bars: { show: true, lineWidth: 1 },
+		legend: { position: "nw" },
+		xaxis: { ticks: [[1, "Jan"], [2, "Feb"], [3, "Mar"], [4, "Apr"], [5, "May"], [6, "Jun"], [7, "Jul"], [8, "Aug"], [9, "Sep"], [10, "Oct"], [11, "Nov"], [12, "Dec"]] },
+		yaxis: { min: 0, max: 1000 },
+		grid: { color: "#666" },
+		colors: ["#0a0", "#f00"]			
+    });
+
 
 });
 </script>
@@ -81,90 +89,91 @@ $(document).ready(function(){
 <body>
 	<!-- Header -->
 	<header id="top">
-		<div class="wrapper-login">
+		<div class="wrapper">
 			<!-- Title/Logo - can use text instead of image -->
-			<div id="title"><img SRC="img/logo.png" alt="Administry" /><!--<span>Administry</span> demo--></div>
+			<div id="title"><img height="30" SRC="img/logo.png" /><!--<span>Administry</span> demo--></div>
+			<!-- Top navigation -->
+			<div id="topnav">
+				<a href="#"><img class="avatar" SRC="img/user_32.png" alt="" /></a>
+				您的登陆账号： <b>admin</b>
+				<span>|</span> <a href="#">设置</a>
+				<span>|</span> <a href="#">退出</a><br />
+				<small>您有<a href="#" class="high"><b>1</b> 条新消息!</a></small>
+			</div>
+			<!-- End of Top navigation -->
 			<!-- Main navigation -->
 			<nav id="menu">
 				<ul class="sf-menu">
-					<li class="current"><a href="#">登录</a></li>
-					<li><a href="#">注册</a></li>
+					<li><a HREF="cd_welcome.html">欢迎界面</a></li>
+					<li>
+						<a HREF="#">设备监控</a>
+						<ul>
+							<li>
+								<a HREF="styles.html">设备监视</a>
+							</li>
+							<li>
+								<a href="#">设备控制</a>
+								<ul>
+									<li><a HREF="samples-files.html">中央空调控制</a></li>
+									<li><a HREF="samples-products.html">电梯控制</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="current">
+						<a HREF="#">知识库</a>
+						<ul>
+							<li><a HREF="cd_help_list.html">知识搜索</a></li>
+							<li><a HREF="cd_help_add.html">知识添加</a></li>
+						</ul>
+					</li>
+					<li><a HREF="cd_report.html">报表统计</a></li>	
+					<li><a HREF="cd_notice.html">通知中心</a></li>	
 				</ul>
 			</nav>
 			<!-- End of Main navigation -->
 		</div>
 	</header>
 	<!-- End of Header -->
+	
+	
 	<!-- Page title -->
 	<div id="pagetitle">
-		<div class="wrapper-login"></div>
+		<div class="wrapper">
+			<h1>知识库 &rarr; <span>知识添加</span></h1>
+			<!-- Quick search box -->
+			<form action="" method="get"><input class="" type="text" id="q" name="q" /></form>
+		</div>
 	</div>
 	<!-- End of Page title -->
 	
 	<!-- Page content -->
 	<div id="page">
 		<!-- Wrapper -->
-		<div class="wrapper-login">
-				<!-- Login form -->
-				<section class="full">					
-					
-					<h3>Login</h3>
-					
-					<div class="box box-info">提示：点击登录按钮进行登录</div>
-
-					<form id="loginform" method="post" action="cd_index.html">
-
-						<p>
-							<label class="required" for="username">用户名:</label><br/>
-							<input type="text" id="username" class="full" value="" name="username"/>
-						</p>
-						
-						<p>
-							<label class="required" for="password">密码:</label><br/>
-							<input type="password" id="password" class="full" value="" name="password"/>
-						</p>
-						
-						<p>
-							<input type="checkbox" id="remember" class="" value="1" name="remember"/>
-							<label class="choice" for="remember">记住密码?</label>
-						</p>
-						
-						<p>
-							<input type="submit" class="btn btn-green big" value="登录"/> &nbsp; <a href="javascript: //;" onClick="$('#emailform').slideDown(); return false;">忘记密码</a>
-						</p>
-						<div class="clear">&nbsp;</div>
-
-					</form>
-					
-					<form id="emailform" style="display:none" method="post" action="#">
-						<div class="box">
-							<p id="emailinput">
-								<label for="email">邮箱地址:</label><br/>
-								<input type="text" id="email" class="full" value="" name="email"/>
-							</p>
-							<p>
-								<input type="submit" class="btn" value="发送"/>
-							</p>
-						</div>
-					</form>
-					
-				</section>
-				<!-- End of login form -->
-				
+		<div class="wrapper">
+		sdfas
+		sdfasasdf
+		asdfa
+		sdfasdfasd
+		fasdf
+		asdfaasdfas
+		dfasd
+		fasdfas
 		</div>
 		<!-- End of Wrapper -->
 	</div>
 	<!-- End of Page content -->
 	
-	<!-- Page footer -->
-	<footer id="bottom">
-		<div class="wrapper-login">
-			<p>Copyright &copy; 2014 <b></p>
-		</div>
-	</footer>
-	<!-- End of Page footer -->
+	<div>
+		<div style="clear:both;"></div>
+		<hr />
+		<p style="text-align:center;">Copyright &copy; 2014</p>
+	</div>
+	
+	<!-- Scroll to top link -->
+	<a href="#" id="totop">^ 回到顶部</a>
 
-<!-- User interface javascript load -->
+<!-- Admin template javascript load -->
 <script type="text/javascript" SRC="js/administry.js"></script>
 </body>
 </html>

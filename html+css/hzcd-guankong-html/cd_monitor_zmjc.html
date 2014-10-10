@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>照明监控</title>
+<!-- Favicons --> 
+<link rel="shortcut icon" type="image/png" HREF="img/favicons/favicon.png"/>
+<link rel="icon" type="image/png" HREF="img/favicons/favicon.png"/>
+<link rel="apple-touch-icon" HREF="img/favicons/apple.png" />
+<!-- Main Stylesheet --> 
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<!-- Colour Schemes
+Default colour scheme is blue. Uncomment prefered stylesheet to use it.
+<link rel="stylesheet" href="css/brown.css" type="text/css" media="screen" />  
+<link rel="stylesheet" href="css/gray.css" type="text/css" media="screen" />  
+<link rel="stylesheet" href="css/green.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="css/pink.css" type="text/css" media="screen" />  
+<link rel="stylesheet" href="css/red.css" type="text/css" media="screen" />
+-->
+<!-- Your Custom Stylesheet --> 
+<link rel="stylesheet" href="css/custom.css" type="text/css" />
+<!--swfobject - needed only if you require <video> tag support for older browsers -->
+<script type="text/javascript" SRC="js/swfobject.js"></script>
+<!-- jQuery with plugins -->
+<script type="text/javascript" SRC="js/jquery-1.4.2.min.js"></script>
+<!-- Could be loaded remotely from Google CDN : <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> -->
+<script type="text/javascript" SRC="js/jquery.ui.core.min.js"></script>
+<script type="text/javascript" SRC="js/jquery.ui.widget.min.js"></script>
+<script type="text/javascript" SRC="js/jquery.ui.tabs.min.js"></script>
+<!-- jQuery tooltips -->
+<script type="text/javascript" SRC="js/jquery.tipTip.min.js"></script>
+<!-- Superfish navigation -->
+<script type="text/javascript" SRC="js/jquery.superfish.min.js"></script>
+<script type="text/javascript" SRC="js/jquery.supersubs.min.js"></script>
+<!-- jQuery form validation -->
+<script type="text/javascript" SRC="js/jquery.validate_pack.js"></script>
+<!-- jQuery popup box -->
+<script type="text/javascript" SRC="js/jquery.nyroModal.pack.js"></script>
+<!-- Internet Explorer Fixes --> 
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" media="all" href="css/ie.css"/>
+<script src="js/html5.js"></script>
+<![endif]-->
+<!--Upgrade MSIE5.5-7 to be compatible with MSIE8: http://ie7-js.googlecode.com/svn/version/2.1(beta3)/IE8.js -->
+<!--[if lt IE 8]>
+<script src="js/IE8.js"></script>
+<![endif]-->
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	/* setup navigation, content boxes, etc... */
+	Administry.setup();
+	
+	/* tabs */
+	$("#tabs, #tabs2").tabs();
+	
+	/* progress bar animations - setting initial values */
+	Administry.progress("#progress1", 10, 100);
+	Administry.progress("#progress2", 25, 100);
+	Administry.progress("#progress3", 50, 100);
+	
+	/* <video> support for older browsers through flash player embedding */
+	Administry.videoSupport('video-flash', 'video/video.f4v', 320, 240);
+
+});
+</script>
+</head>
+<body>
+	<!-- Header -->
+	<div id="top" style="background:#282828;">
+		<div class="wrapper">
+			<!-- Title/Logo - can use text instead of image -->
+			<div id="title"><img height="30" SRC="img/logo.png" /><!--<span>Administry</span> demo--></div>
+			<!-- Top navigation -->
+			<div id="topnav">
+				<a href="#"><img class="avatar" SRC="img/user_32.png" alt="" /></a>
+				您的登陆账号： <b>admin</b>
+				<span>|</span> <a href="#">设置</a>
+				<span>|</span> <a href="#">退出</a><br />
+				<small>您有<a href="#" class="high"><b>1</b> 条新消息!</a></small>
+			</div>
+			<!-- End of Top navigation -->
+			<!-- Main navigation -->
+			<ul class="sf-menu">
+				<li><a HREF="cd_welcome.html">欢迎界面</a></li>
+				<li>
+					<a HREF="#">设备监控</a>
+					<ul>
+						<li>
+							<a HREF="styles.html">设备监视</a>
+						</li>
+						<li>
+							<a href="#">设备控制</a>
+							<ul>
+								<li><a HREF="samples-files.html">中央空调控制</a></li>
+								<li><a HREF="samples-products.html">电梯控制</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li class="current">
+					<a HREF="#">知识库</a>
+					<ul>
+						<li><a HREF="cd_help_list.html">知识搜索</a></li>
+						<li><a HREF="cd_help_add.html">知识添加</a></li>
+					</ul>
+				</li>
+				<li><a HREF="cd_report.html">报表统计</a></li>	
+				<li><a HREF="cd_notice.html">通知中心</a></li>	
+			</ul>
+			<!-- End of Main navigation -->
+		</div>
+	</div>
+	<!-- End of Header -->
+	
+	
+	<!-- Page title -->
+	<div id="pagetitle">
+		<div class="wrapper">
+			<h1>设备监控 &rarr; <span>照明监控</span></h1>
+			<!-- Quick search box -->
+			<form action="" method="get"><input class="" type="text" id="q" name="q" /></form>
+		</div>
+	</div>
+	<!-- End of Page title -->
+	
+	<!-- Page content -->
+	<div id="page">
+		<!-- Wrapper -->
+		<div class="wrapper">
+			<div id="tabs">
+				<ul>
+					<li><a class="corner-tl" href="#tabs-1">远程操作</a></li>
+					<li><a class="" href="#tabs-2">终端管理</a></li>
+					<li><a class="" href="#tabs-3">运行状态</a></li>
+					<li><a class="" href="#tabs-4">历史数据</a></li>
+					<li><a class="corner-tr" href="#tabs-5">远程操作</a></li>
+				</ul>
+				<div id="tabs-1">
+				    <div style="float:left; width:70%;padding-bottom:50px;" align="center">
+						<img src="img/dengpao.png" width="200" height="200"/><br>
+						<input type="radio" id="allopen" class="" name="operation">
+						<label class="choice" for="allopen">全开</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" id="allclose" class="" name="operation">
+						<label class="choice" for="allclose">全关</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" id="allnothing" class="" name="operation">
+						<label class="choice" for="allnothing">全不变</label><br>
+						
+						<table class="display stylized" id="example" style="width: 100%;">
+							<thead>
+								<tr>
+									<th style="width: 20%;"><center>对象</center></th>
+									<th style="width: 80%;" colspan="3"><center>操作内容</center></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="gradeA odd">
+									<td class=" sorting_1">第1路</td>
+									<td>
+										<input type="radio" id="open-tr1-td1" class="" name="operation-tr1">
+										<label class="choice" for="open-tr1-td1">开灯</label>
+									</td>
+									<td>
+										<input type="radio" id="open-tr1-td2" class="" name="operation-tr1">
+										<label class="choice" for="open-tr1-td2">关灯</label>
+									</td>
+									<td>
+										<input type="radio" id="open-tr1-td3" class="" name="operation-tr1">
+										<label class="choice" for="open-tr1-td3">不变</label>
+									</td>
+								</tr>
+								<tr class="gradeA odd">
+									<td class=" sorting_1">第2路</td>
+									<td>
+										<input type="radio" id="open-tr2-td1" class="" name="operation-tr2">
+										<label class="choice" for="open-tr1-td1">开灯</label>
+									</td>
+									<td>
+										<input type="radio" id="open-tr2-td2" class="" name="operation-tr2">
+										<label class="choice" for="open-tr1-td2">关灯</label>
+									</td>
+									<td>
+										<input type="radio" id="open-tr2-td3" class="" name="operation-tr2">
+										<label class="choice" for="open-tr1-td3">不变</label>
+									</td>
+								</tr>
+								<tr class="gradeA odd">
+									<td class=" sorting_1">第3路</td>
+									<td>
+										<input type="radio" id="open-tr3-td1" class="" name="operation-tr3">
+										<label class="choice" for="open-tr1-td1">开灯</label>
+									</td>
+									<td>
+										<input type="radio" id="open-tr3-td2" class="" name="operation-tr3">
+										<label class="choice" for="open-tr1-td2">关灯</label>
+									</td>
+									<td>
+										<input type="radio" id="open-tr3-td3" class="" name="operation-tr3">
+										<label class="choice" for="open-tr1-td3">不变</label>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<br />
+						<input style="width:120px;" type="submit" class="btn btn-green big" value="读取开关状态"/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input style="width:120px;" type="submit" class="btn btn-green big" value="执行操作"/>
+						
+					</div>
+					<div style="float:right;width:30%;">
+						<div style="background:#2A7AD2;color:#fff;font-size:18px;padding:10px;">
+						    <b>终端列表</b>
+							<a href="#" class="btn" style="float:right;">全选</a>
+						</div>
+						<div style="border:1px solid #2A7AD2;height:500px;padding:10px;">
+							<p>
+								<input type="checkbox" id="terms" class="">
+								<label class="choice" for="terms">清城区（1,0）</label>
+							</p>
+							<p>
+								<input type="checkbox" id="terms" class="">
+								<label class="choice" for="terms">广西（1,0）</label>
+							</p>
+							<p>
+								<input type="checkbox" id="terms" class="">
+								<label class="choice" for="terms">福建（1,0）</label>
+							</p>
+							<p>
+								<input type="checkbox" id="terms" class="">
+								<label class="choice" for="terms">海口（1,0）</label>
+							</p>
+							<p>
+								<input type="checkbox" id="terms" class="">
+								<label class="choice" for="terms">北京（2,0）</label>
+							</p>
+							<p>
+								<input type="checkbox" id="terms" class="">
+								<label class="choice" for="terms">哈尔滨（1,0）</label>
+							</p>
+							<p>
+								<input type="checkbox" id="terms" class="">
+								<label class="choice" for="terms">广州南站（1,0）</label>
+							</p>
+							<p>
+								<input type="checkbox" id="terms" class="">
+								<label class="choice" for="terms">浙江杭州（1,0）</label>
+							</p>
+							<p>
+								<input type="checkbox" id="terms" class="">
+								<label class="choice" for="terms">浙江绍兴（1,0）</label>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div id="tabs-2">
+					<p>请点远程操作tab页</p>
+				</div>
+				<div id="tabs-3">
+					<p>请点远程操作tab页</p>
+				</div>
+				<div id="tabs-4">
+					<p>请点远程操作tab页</p>
+				</div>
+				<div id="tabs-5">
+					<p>请点远程操作tab页</p>
+				</div>
+			</div>
+		</div>
+		<!-- End of Wrapper -->
+	</div>
+	<!-- End of Page content -->
+	<br />
+	<div style="clear:both;">
+		<hr />
+		<p style="text-align:center;">Copyright &copy; 2014</p>
+	</div>
+	
+	<!-- Scroll to top link -->
+	<a href="#" id="totop">^ 回到顶部</a>
+
+<!-- Admin template javascript load -->
+<script type="text/javascript" SRC="js/administry.js"></script></body>
+</html>

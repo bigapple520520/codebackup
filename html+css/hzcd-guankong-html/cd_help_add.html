@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>知识库</title>
+<title>知识添加</title>
 <!-- Favicons --> 
 <link rel="shortcut icon" type="image/png" HREF="img/favicons/favicon.png"/>
 <link rel="icon" type="image/png" HREF="img/favicons/favicon.png"/>
@@ -32,10 +32,10 @@ Default colour scheme is blue. Uncomment prefered stylesheet to use it.
 <!-- Superfish navigation -->
 <script type="text/javascript" SRC="js/jquery.superfish.min.js"></script>
 <script type="text/javascript" SRC="js/jquery.supersubs.min.js"></script>
-<!-- jQuery form validation -->
-<script type="text/javascript" SRC="js/jquery.validate_pack.js"></script>
 <!-- jQuery popup box -->
 <script type="text/javascript" SRC="js/jquery.nyroModal.pack.js"></script>
+<!-- jQuery form validation -->
+<script type="text/javascript" SRC="js/jquery.validate_pack.js"></script>
 <!-- Internet Explorer Fixes --> 
 <!--[if IE]>
 <link rel="stylesheet" type="text/css" media="all" href="css/ie.css"/>
@@ -51,22 +51,85 @@ $(document).ready(function(){
 	/* setup navigation, content boxes, etc... */
 	Administry.setup();
 	
-	/* tabs */
-	$("#tabs, #tabs2").tabs();
-	
 	/* progress bar animations - setting initial values */
-	Administry.progress("#progress1", 10, 100);
-	Administry.progress("#progress2", 25, 100);
-	Administry.progress("#progress3", 50, 100);
+	Administry.progress("#progress1", 1, 6);
 	
-	/* <video> support for older browsers through flash player embedding */
-	Administry.videoSupport('video-flash', 'video/video.f4v', 320, 240);
+	// validate form on keyup and submit
+	var validator = $("#sampleform").validate({
+		rules: {
+			firstname: "required",
+			lastname: "required",
+			username: {
+				required: true,
+				minlength: 2
+			},
+			password: {
+				required: true,
+				minlength: 5
+			},
+			password_confirm: {
+				required: true,
+				minlength: 5,
+				equalTo: "#password"
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			dateformat: "required",
+			terms: "required"
+		},
+		messages: {
+			firstname: "Enter your firstname",
+			lastname: "Enter your lastname",
+			username: {
+				required: "Enter a username",
+				minlength: jQuery.format("Enter at least {0} characters")
+			},
+			password: {
+				required: "Provide a password",
+				rangelength: jQuery.format("Enter at least {0} characters")
+			},
+			password_confirm: {
+				required: "Repeat your password",
+				minlength: jQuery.format("Enter at least {0} characters"),
+				equalTo: "Enter the same password as above"
+			},
+			email: {
+				required: "Please enter a valid email address",
+				minlength: "Please enter a valid email address"
+			},
+			dateformat: "Choose your preferred dateformat",
+			terms: " "
+		},
+		// the errorPlacement has to take the layout into account
+		errorPlacement: function(error, element) {
+			error.insertAfter(element.parent().find('label:first'));
+		},
+		// specifying a submitHandler prevents the default submit, good for the demo
+		submitHandler: function() {
+			alert("Data submitted!");
+		},
+		// set new class to error-labels to indicate valid fields
+		success: function(label) {
+			// set &nbsp; as text for IE
+			label.html("&nbsp;").addClass("ok");
+		}
+	});
+	
+	// propose username by combining first- and lastname
+	$("#username").focus(function() {
+		var firstname = $("#firstname").val();
+		var lastname = $("#lastname").val();
+		if(firstname && lastname && !this.value) {
+			this.value = firstname + "." + lastname;
+		}
+	});
 
 });
 </script>
 </head>
 <body>
-	<!-- Header -->
 	<header id="top">
 		<div class="wrapper">
 			<!-- Title/Logo - can use text instead of image -->
@@ -115,10 +178,11 @@ $(document).ready(function(){
 	</header>
 	<!-- End of Header -->
 	
+	
 	<!-- Page title -->
 	<div id="pagetitle">
 		<div class="wrapper">
-			<h1>知识库 &rarr; <span>知识搜索</span></h1>
+			<h1>知识库 &rarr; <span>知识添加</span></h1>
 			<!-- Quick search box -->
 			<form action="" method="get"><input class="" type="text" id="q" name="q" /></form>
 		</div>
@@ -130,42 +194,33 @@ $(document).ready(function(){
 		<!-- Wrapper -->
 		<div class="wrapper">
 				<!-- Left column/section -->
-				<section class="column width6 first" style="width:100%;">
+				<section class="column width6 first">					
+
+					<h3>请维护知识库数据</h3>
+					<div class="box box-info">以下字段都为必填项目</div>
+					
+					<form id="sampleform" method="post" action="#">
 					<p>
-						<label>输入搜索关键字:</label><br/>
-						<input type="text" id="firstname" class="half" value="中央空调常见问题" name="firstname"/>
-						<input type="submit" class="btn btn-green big" value="搜索"/>
+						<label for="input2">知识标题:</label><br/>
+						<input type="text" id="input2" class="half title" value="" name="input2"/>
 					</p>
-					
-					<div style="margin-top:20px;">
-						<a href="#"><b class="big">家用空调及中央空调常见故障处理方法</b></a>
-						<p style="width:500px;">空调维修是一项专业空调技术工种,看似简单的空调维修工作,在不同的空调维修人员手里有着不同的操作结果。下面简单介绍一下空调常见故障的维修!...</p>
-					<div>
-					<div style="margin-top:20px;">
-						<a href="#"><b class="big">中央空调水系统常见问题及解决办法</b></a>
-						<p style="width:500px;">中央空调为水系统和氟系统,中央空调水系统是目前最为节能的空调系统。不过,中央空调水系统容易发生结垢、堵塞、效率降低等系列问题,影响其正常运行,注意...</p>
-					<div>
-					<div style="margin-top:20px;">
-						<a href="#"><b class="big">中央空调常见故障与解决方法</b></a>
-						<p style="width:500px;">摘要:中央空调原理-工艺-技术篇:介绍了中央空调的六大常见故障的原因以及解决方法。以下内容由买购网整理,提供给您参考。中央空调常见故障与解决方法 1、机器露点...</p>
-					<div>
-					<div style="margin-top:20px;">
-						<a href="#"><b class="big">中央空调常见问题-空调常见问题解答</b></a>
-						<p style="width:500px;">从近几年的市场发展趋势来看,虽然选择中央空调的家庭越来越多,但公众对家用中央空调的疑虑依然存在,以上中央空调常见问题只是截取的一部分,如果消费者对...</p>
-					<div>
-					<div style="margin-top:20px;">
-						<a href="#"><b class="big">中央空调常见故障</b></a>
-						<p style="width:500px;">标签: 空调 中央空调常见故障现象 (1)、漏:指制冷剂泄漏;电气(线路、机体)绝缘破损引起的漏电等。 (2)、堵:指制冷系统的脏堵与冰堵;空气过滤器堵塞;进...</p>
-					<div>
-					<div style="margin-top:20px;">
-						<a href="#"><b class="big">中央空调常见故障与维修方法</b></a>
-						<p style="width:500px;">中央空调常见故障与维修方法 中央空调常见故障现象与解决方法 中央空调常见故障现象有: 1、漏:指制冷剂泄漏;电气(线路、机体)绝缘破损引起的漏电等。 2、堵:指...</p>
-					<div>
-					
-					<hr/>
-					<p>Copyright &copy; 2010</p>
+					<p>
+						<label for="area1">知识摘要:</label><br/>
+						<textarea id="area2" class="medium half" name="area2" style="height:50px;"></textarea>
+					</p>
+					<p>
+						<label for="area1">知识内容:</label><br/>
+						<textarea id="area2" class="medium half" name="area2"></textarea>
+					</p>
+					<p>
+						<input type="submit" class="btn btn-green big" value="保存"/>
+					</p>
+					</form>
+				
 				</section>
 				<!-- End of Left column/section -->
+				<hr/>
+				<p>Copyright &copy; 2010</p>
 				
 		</div>
 		<!-- End of Wrapper -->
@@ -175,6 +230,7 @@ $(document).ready(function(){
 	<!-- Scroll to top link -->
 	<a href="#" id="totop">^ scroll to top</a>
 
-<!-- Admin template javascript load -->
-<script type="text/javascript" SRC="js/administry.js"></script></body>
+<!-- User interface javascript load -->
+<script type="text/javascript" SRC="js/administry.js"></script>
+</body>
 </html>

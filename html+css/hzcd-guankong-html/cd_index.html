@@ -2,11 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>欢迎页</title>
-<!-- We need to emulate IE7 only when we are to use excanvas -->
-<!--[if IE]>
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<![endif]-->
+<title>登录页</title>
 <!-- Favicons --> 
 <link rel="shortcut icon" type="image/png" HREF="img/favicons/favicon.png"/>
 <link rel="icon" type="image/png" HREF="img/favicons/favicon.png"/>
@@ -40,9 +36,6 @@ Default colour scheme is blue. Uncomment prefered stylesheet to use it.
 <script type="text/javascript" SRC="js/jquery.validate_pack.js"></script>
 <!-- jQuery popup box -->
 <script type="text/javascript" SRC="js/jquery.nyroModal.pack.js"></script>
-<!-- jQuery graph plugins -->
-<!--[if IE]><script type="text/javascript" src="js/flot/excanvas.min.js"></script><![endif]-->
-<script type="text/javascript" SRC="js/flot/jquery.flot.min.js"></script>
 <!-- Internet Explorer Fixes --> 
 <!--[if IE]>
 <link rel="stylesheet" type="text/css" media="all" href="css/ie.css"/>
@@ -53,35 +46,32 @@ Default colour scheme is blue. Uncomment prefered stylesheet to use it.
 <script src="js/IE8.js"></script>
 <![endif]-->
 <script type="text/javascript">
+
 $(document).ready(function(){
 	
 	/* setup navigation, content boxes, etc... */
 	Administry.setup();
 	
-	/* progress bar animations - setting initial values */
-	Administry.progress("#progress1", 1, 5);
-	Administry.progress("#progress2", 2, 5);
-	Administry.progress("#progress3", 2, 5);
-
-	/* flot graphs */
-	var sales = [{
-		label: 'Total Paid',
-		data: [[1, 0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,900],[8,0],[9,0],[10,0],[11,0],[12,0]]
-	},{
-		label: 'Total Due',
-		data: [[1, 0],[2,0],[3,0],[4,0],[5,0],[6,422.10],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0]]
-	}
-	];
-
-	var plot = $.plot($("#placeholder"), sales, {
-		bars: { show: true, lineWidth: 1 },
-		legend: { position: "nw" },
-		xaxis: { ticks: [[1, "Jan"], [2, "Feb"], [3, "Mar"], [4, "Apr"], [5, "May"], [6, "Jun"], [7, "Jul"], [8, "Aug"], [9, "Sep"], [10, "Oct"], [11, "Nov"], [12, "Dec"]] },
-		yaxis: { min: 0, max: 1000 },
-		grid: { color: "#666" },
-		colors: ["#0a0", "#f00"]			
-    });
-
+	// validate signup form on keyup and submit
+	var validator = $("#loginform").validate({
+		rules: {
+			username: "required",
+			password: "required"
+		},
+		messages: {
+			username: "Enter your username",
+			password: "Provide your password"
+		},
+		// the errorPlacement has to take the layout into account
+		errorPlacement: function(error, element) {
+			error.insertAfter(element.parent().find('label:first'));
+		},
+		// set new class to error-labels to indicate valid fields
+		success: function(label) {
+			// set &nbsp; as text for IE
+			label.html("&nbsp;").addClass("ok");
+		}
+	});
 
 });
 </script>
@@ -89,253 +79,90 @@ $(document).ready(function(){
 <body>
 	<!-- Header -->
 	<header id="top">
-		<div class="wrapper">
+		<div class="wrapper-login">
 			<!-- Title/Logo - can use text instead of image -->
-			<div id="title"><img height="30" SRC="img/logo.png" /><!--<span>Administry</span> demo--></div>
-			<!-- Top navigation -->
-			<div id="topnav">
-				<a href="#"><img class="avatar" SRC="img/user_32.png" alt="" /></a>
-				您的登陆账号： <b>admin</b>
-				<span>|</span> <a href="#">设置</a>
-				<span>|</span> <a href="#">退出</a><br />
-				<small>您有<a href="#" class="high"><b>1</b> 条新消息!</a></small>
-			</div>
-			<!-- End of Top navigation -->
+			<div id="title"><img SRC="img/logo.png" alt="Administry" /><!--<span>Administry</span> demo--></div>
 			<!-- Main navigation -->
 			<nav id="menu">
 				<ul class="sf-menu">
-					<li><a HREF="index.html">欢迎界面</a></li>
-					<li>
-						<a HREF="styles.html">设备监控</a>
-						<ul>
-							<li>
-								<a HREF="styles.html">设备监视</a>
-							</li>
-							<li>
-								<a href="#">设备控制</a>
-								<ul>
-									<li><a HREF="samples-files.html">中央空调控制</a></li>
-									<li><a HREF="samples-products.html">电梯控制</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-					<li class="current">
-						<a HREF="#">知识库</a>
-						<ul>
-							<li><a HREF="cd_help_list.html">知识搜索</a></li>
-							<li><a HREF="#">知识添加</a></li>
-							<li><a HREF="#">我的知识</a></li>
-						</ul>
-					</li>
-					<li><a HREF="cd_report.html">报表统计</a></li>	
-					<li><a HREF="cd_notice.html">通知中心</a></li>	
+					<li class="current"><a href="#">登录</a></li>
+					<li><a href="#">注册</a></li>
 				</ul>
 			</nav>
 			<!-- End of Main navigation -->
 		</div>
 	</header>
 	<!-- End of Header -->
-	
-	
 	<!-- Page title -->
 	<div id="pagetitle">
-		<div class="wrapper">
-			<h1>欢迎界面</h1>
-			<!-- Quick search box -->
-			<form action="" method="get"><input class="" type="text" id="q" name="q" /></form>
-		</div>
+		<div class="wrapper-login"></div>
 	</div>
 	<!-- End of Page title -->
 	
 	<!-- Page content -->
 	<div id="page">
 		<!-- Wrapper -->
-		<div class="wrapper">
-				<!-- Left column/section -->
-				<section class="column width6 first">
-				
-					<div class="colgroup leading">
-						<div class="column width3 first">
-							<h3>您好：<a href="#">admin</a>，欢迎登陆物联管控平台</h3>
-							<p>
-								您可以进入相应模块对接入设备进行监控管理操作。
-							</p>
-						</div>
-						<div class="column width3">
-							<h4>最近一次登陆时间</h4>
-							<p>
-								2014年10月1号，14:25<br />
-								登陆IP为：127.0.0.1
-							</p>
-						</div>
-					</div>
+		<div class="wrapper-login">
+				<!-- Login form -->
+				<section class="full">					
 					
-					<div class="colgroup leading">
-						<div class="column width3 first">
-							<h4>Invoices: <a href="#">10</a></h4>
-							<hr/>
-							<table class="no-style full">
-								<tbody>
-									<tr>
-										<td>Total Invoices</td>
-										<td class="ta-right"><a href="#">10</a></td>
-										<td class="ta-right">1,322.10 &euro;</td>
-									</tr>
-									<tr>
-										<td>Total Paid</td>
-										<td class="ta-right"><a href="#">9</a></td>
-										<td class="ta-right">900.00 &euro;</td>
-									</tr>
-									<tr>
-										<td>Total Due</td>
-										<td class="ta-right"><a href="#">1</a></td>
-										<td class="ta-right">422.10 &euro;</td>
-									</tr>
-									<tr>
-										<td>Total Overdue</td>
-										<td class="ta-right">0</td>
-										<td class="ta-right">0.00 &euro;</td>
-									</tr>
-								</tbody>
-							</table>
+					<h3>Login</h3>
+					
+					<div class="box box-info">提示：点击登录按钮进行登录</div>
+
+					<form id="loginform" method="post" action="cd_welcome.html">
+
+						<p>
+							<label class="required" for="username">用户名:</label><br/>
+							<input type="text" id="username" class="full" value="" name="username"/>
+						</p>
+						
+						<p>
+							<label class="required" for="password">密码:</label><br/>
+							<input type="password" id="password" class="full" value="" name="password"/>
+						</p>
+						
+						<p>
+							<input type="checkbox" id="remember" class="" value="1" name="remember"/>
+							<label class="choice" for="remember">记住密码?</label>
+						</p>
+						
+						<p>
+							<input type="submit" class="btn btn-green big" value="登录"/> &nbsp; <a href="javascript: //;" onClick="$('#emailform').slideDown(); return false;">忘记密码</a>
+						</p>
+						<div class="clear">&nbsp;</div>
+
+					</form>
+					
+					<form id="emailform" style="display:none" method="post" action="#">
+						<div class="box">
+							<p id="emailinput">
+								<label for="email">邮箱地址:</label><br/>
+								<input type="text" id="email" class="full" value="" name="email"/>
+							</p>
+							<p>
+								<input type="submit" class="btn" value="发送"/>
+							</p>
 						</div>
-						<div class="column width3">
-							<h4>Sales: <a href="#">1</a></h4>
-							<hr/>
-							<table class="no-style full">
-								<tbody>
-									<tr>
-										<td>Clients This Month</td>
-										<td class="ta-right"><a href="#">1</a></td>
-										<td class="ta-right"></td>
-									</tr>
-									<tr>
-										<td>Sales This Month</td>
-										<td class="ta-right"><a href="#">9</a></td>
-										<td class="ta-right">900.00 &euro;</td>
-									</tr>
-									<tr>
-										<td>Clients Total</td>
-										<td class="ta-right"><a href="#">5</a></td>
-										<td class="ta-right"></td>
-									</tr>
-									<tr>
-										<td>Sales Total</td>
-										<td class="ta-right"><a href="#">9</a></td>
-										<td class="ta-right">900.00 &euro;</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				
-					<div class="colgroup leading">
-						<div class="column width3 first">
-							<h4>Client Stats</h4>
-							<hr/>
-							<table class="no-style full">
-								<tbody>
-									<tr>
-										<td>Active</td>
-										<td class="ta-right">1/5</td>
-										<td><div id="progress1" class="progress full progress-green"><span><b></b></span></div></td>
-									</tr>
-									<tr>
-										<td>Pending</td>
-										<td class="ta-right">2/5</td>
-										<td><div id="progress2" class="progress full progress-blue"><span><b></b></span></div></td>
-									</tr>
-									<tr>
-										<td>Suspended</td>
-										<td class="ta-right">2/5</td>
-										<td><div id="progress3" class="progress full progress-red"><span><b></b></span></div></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="column width3">
-							<h4>Reports</h4>
-							<hr/>
-							<p><b>Sales this year</b></p>
-							<div id="placeholder" style="height:100px"></div>
-						</div>
-					</div>
-					<div class="clear">&nbsp;</div>
-				
+					</form>
+					
 				</section>
-				<!-- End of Left column/section -->
-				
-				<!-- Right column/section -->
-				<aside class="column width2">
-					<div id="rightmenu">
-						<header>
-							<h3>您的账号：</h3>
-						</header>
-						<dl class="first">
-							<dt><img width="16" height="16" alt="" SRC="img/key.png"></dt>
-							<dd><a href="#">超级管理员 (admin)</a></dd>
-							<dd class="last">姓名：徐钟达</dd>
-							
-							<dt><img width="16" height="16" alt="" SRC="img/help.png"></dt>
-							<dd><a href="#">请求帮助</a></dd>
-							<dd class="last">管控平台的一些常见问题</dd>
-						</dl>
-					</div>
-					<div class="content-box">
-						<header>
-							<h3>最新未读通知</h3>
-						</header>
-						<section>
-							<dl>
-								<dt>5号楼电梯有异常，请尽快核实查看...</dt>
-								<dd><a href="#">阅读</a></dd>
-								<dt>8号楼的中央空调温度超出常规参数，请尽快确认问题...</dt>
-								<dd><a href="#">阅读</a></dd>
-							</dl>
-						</section>
-					</div>
-				</aside>
-				<!-- End of Right column/section -->
+				<!-- End of login form -->
 				
 		</div>
 		<!-- End of Wrapper -->
 	</div>
 	<!-- End of Page content -->
 	
-	
 	<!-- Page footer -->
 	<footer id="bottom">
-		<div class="wrapper">
-			<nav>
-				<a href="#">欢迎界面</a> &middot;
-				<a href="#">设备监控</a> &middot;
-				<a href="#">知识库</a> &middot;
-				<a href="#">报表统计</a> &middot;
-				<a href="#">通知中心</a> &middot;
-			</nav>
-			<p>Copyright &copy; 2014</p>
+		<div class="wrapper-login">
+			<p>Copyright &copy; 2014 <b></p>
 		</div>
 	</footer>
 	<!-- End of Page footer -->
-	
-	<!-- Animated footer -->
-	<footer id="animated">
-		<ul>
-			<li><a href="#">欢迎界面</a></li>
-			<li><a href="#">设备监控</a></li>
-			<li><a href="#">知识库</a></li>
-			<li><a href="#">报表统计</a></li>
-			<li><a href="#">通知中心</a></li>
-		</ul>
-	</footer>
-	<!-- End of Animated footer -->
-	
-	
-	<!-- Scroll to top link -->
-	<a href="#" id="totop">^ 回到顶部</a>
 
-<!-- Admin template javascript load -->
+<!-- User interface javascript load -->
 <script type="text/javascript" SRC="js/administry.js"></script>
 </body>
 </html>

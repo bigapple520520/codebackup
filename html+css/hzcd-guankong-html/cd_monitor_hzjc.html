@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>火灾检测</title>
+<!-- Favicons --> 
+<link rel="shortcut icon" type="image/png" HREF="img/favicons/favicon.png"/>
+<link rel="icon" type="image/png" HREF="img/favicons/favicon.png"/>
+<link rel="apple-touch-icon" HREF="img/favicons/apple.png" />
+<!-- Main Stylesheet --> 
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<!-- Colour Schemes
+Default colour scheme is blue. Uncomment prefered stylesheet to use it.
+<link rel="stylesheet" href="css/brown.css" type="text/css" media="screen" />  
+<link rel="stylesheet" href="css/gray.css" type="text/css" media="screen" />  
+<link rel="stylesheet" href="css/green.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="css/pink.css" type="text/css" media="screen" />  
+<link rel="stylesheet" href="css/red.css" type="text/css" media="screen" />
+-->
+<!-- Your Custom Stylesheet --> 
+<link rel="stylesheet" href="css/custom.css" type="text/css" />
+<!--swfobject - needed only if you require <video> tag support for older browsers -->
+<script type="text/javascript" SRC="js/swfobject.js"></script>
+<!-- jQuery with plugins -->
+<script type="text/javascript" SRC="js/jquery-1.4.2.min.js"></script>
+<!-- Could be loaded remotely from Google CDN : <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> -->
+<script type="text/javascript" SRC="js/jquery.ui.core.min.js"></script>
+<script type="text/javascript" SRC="js/jquery.ui.widget.min.js"></script>
+<script type="text/javascript" SRC="js/jquery.ui.tabs.min.js"></script>
+<!-- jQuery tooltips -->
+<script type="text/javascript" SRC="js/jquery.tipTip.min.js"></script>
+<!-- Superfish navigation -->
+<script type="text/javascript" SRC="js/jquery.superfish.min.js"></script>
+<script type="text/javascript" SRC="js/jquery.supersubs.min.js"></script>
+<!-- jQuery form validation -->
+<script type="text/javascript" SRC="js/jquery.validate_pack.js"></script>
+<!-- jQuery popup box -->
+<script type="text/javascript" SRC="js/jquery.nyroModal.pack.js"></script>
+<!-- Internet Explorer Fixes --> 
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" media="all" href="css/ie.css"/>
+<script src="js/html5.js"></script>
+<![endif]-->
+<!--Upgrade MSIE5.5-7 to be compatible with MSIE8: http://ie7-js.googlecode.com/svn/version/2.1(beta3)/IE8.js -->
+<!--[if lt IE 8]>
+<script src="js/IE8.js"></script>
+<![endif]-->
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	/* setup navigation, content boxes, etc... */
+	Administry.setup();
+	
+	/* tabs */
+	$("#tabs, #tabs2").tabs();
+	
+	/* progress bar animations - setting initial values */
+	Administry.progress("#progress1", 10, 100);
+	Administry.progress("#progress2", 25, 100);
+	Administry.progress("#progress3", 50, 100);
+	
+	/* <video> support for older browsers through flash player embedding */
+	Administry.videoSupport('video-flash', 'video/video.f4v', 320, 240);
+
+});
+</script>
+</head>
+<body>
+	<!-- Header -->
+	<header id="top">
+		<div class="wrapper">
+			<!-- Title/Logo - can use text instead of image -->
+			<div id="title"><img height="30" SRC="img/logo.png" /><!--<span>Administry</span> demo--></div>
+			<!-- Top navigation -->
+			<div id="topnav">
+				<a href="#"><img class="avatar" SRC="img/user_32.png" alt="" /></a>
+				您的登陆账号： <b>admin</b>
+				<span>|</span> <a href="#">设置</a>
+				<span>|</span> <a href="#">退出</a><br />
+				<small>您有<a href="#" class="high"><b>1</b> 条新消息!</a></small>
+			</div>
+			<!-- End of Top navigation -->
+			<!-- Main navigation -->
+			<nav id="menu">
+				<ul class="sf-menu">
+					<li><a HREF="cd_welcome.html">欢迎界面</a></li>
+					<li>
+						<a HREF="#">设备监控</a>
+						<ul>
+							<li>
+								<a HREF="styles.html">设备监视</a>
+							</li>
+							<li>
+								<a href="#">设备控制</a>
+								<ul>
+									<li><a HREF="samples-files.html">中央空调控制</a></li>
+									<li><a HREF="samples-products.html">电梯控制</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="current">
+						<a HREF="#">知识库</a>
+						<ul>
+							<li><a HREF="cd_help_list.html">知识搜索</a></li>
+							<li><a HREF="cd_help_add.html">知识添加</a></li>
+						</ul>
+					</li>
+					<li><a HREF="cd_report.html">报表统计</a></li>	
+					<li><a HREF="cd_notice.html">通知中心</a></li>	
+				</ul>
+			</nav>
+			<!-- End of Main navigation -->
+		</div>
+	</header>
+	<!-- End of Header -->
+	
+	
+	<!-- Page title -->
+	<div id="pagetitle">
+		<div class="wrapper">
+			<h1>设备监控 &rarr; <span>火灾检测</span></h1>
+			<!-- Quick search box -->
+			<form action="" method="get"><input class="" type="text" id="q" name="q" /></form>
+		</div>
+	</div>
+	<!-- End of Page title -->
+	
+	<!-- Page content -->
+	<div id="page">
+		<!-- Wrapper -->
+		<div class="wrapper">
+			<div id="tabs">
+				<ul>
+					<li><a class="corner-tl" href="#tabs-1">系统</a></li>
+					<li><a class="" href="#tabs-2">工程</a></li>
+					<li><a class="" href="#tabs-3">数据</a></li>
+					<li><a class="corner-tr" href="#tabs-4">维护</a></li>
+				</ul>
+				<div id="tabs-1">
+				    <fieldset>
+						<legend>UPS状态</legend>
+						<table class="no-style" style="width:100%;">
+							<tr>
+								<td width="10%">输入电压:</td>
+								<td width="15%"><b>225.1</b>V</td>
+								<td width="10%">输出电压:</td>
+								<td width="15%"><b>221.5</b>V</td>
+								<td width="10%">额定电压范围:</td>
+								<td width="15%"><b>187-242</b>V</td>
+								<td width="25%" rowspan="2" align="center"><input style="width:80px;" type="submit" class="btn btn-green big" value="通讯正常"/></td>
+							</tr>
+							<tr>
+								<td>输出频率：</td>
+								<td><b>49.9</b>Hz</td>
+								<td>输出占用：</td>
+								<td><b>12</b>%</td>
+								<td>电源电池温度</td>
+								<td><b>24.1</b>C</td>
+							</tr>
+						</table>
+					</fieldset>
+					<fieldset>
+						<legend>电池状态</legend>
+						<table class="no-style" style="width:100%;">
+							<tr>
+								<td width="10%">电流值:</td>
+								<td width="15%"><b>-0.052</b>A</td>
+								<td width="25%"><input type="submit" class="btn btn-green big" value="未短路"/></td>
+								<td width="25%"><input type="submit" class="btn btn-green big" value="未断路"/></td>
+								<td width="25%" align="center"><input style="width:80px;" type="submit" class="btn btn-green big" value="正常"/></td>
+							</tr>
+						</table>
+					</fieldset>
+					<fieldset>
+						<legend>指示灯状态</legend>
+						<table class="no-style" style="width:100%;">
+							<tr align="center">
+								<td width="8%"><img src="img/bullet_red.png"></td>
+								<td width="8%"><img src="img/bullet_yellow.png"></td>
+								<td width="8%"><img src="img/bullet_green.png"></td>
+								<td width="8%"><img src="img/bullet_green.png"></td>
+								<td width="8%"><img src="img/bullet_green.png"></td>
+								<td width="15%"><input type="submit" class="btn btn-green big" value="未按下"/></td>
+								<td width="15%"><input type="submit" class="btn btn-green big" value="未按下"/></td>
+								<td width="5%"><b>J16</b></td>
+								<td width="25%" align="center"><input style="width:80px;" type="submit" class="btn btn-green big" value="通讯正常"/></td>
+							</tr>
+							<tr align="center">
+								<td width="10%"><a href="#" class="btn">报告检测</a></td>
+								<td width="10%"><a href="#" class="btn">故障检测</a></td>
+								<td width="10%"><a href="#" class="btn">运行检测</a></td>
+								<td width="10%">主电源</td>
+								<td width="10%">备用电源</td>
+								<td width="15%">消声按钮</td>
+								<td width="25%">复位按钮</td>
+								<td width="25%"><b>K32</b></td>
+								<td width="25%" align="center"><input style="width:80px;" type="submit" class="btn btn-green big" value="通讯正常"/></td>
+							</tr>
+						</table>
+					</fieldset>
+					<fieldset>
+						<legend>其他</legend>
+						<table class="no-style" style="width:100%;">
+							<tr>
+								<td width="12%"><a href="#" class="btn">报警声检测</a></td>
+								<td width="12%"><a href="#" class="btn">故障声检测</a></td>
+								<td width="12%"><a href="#" class="btn">显示屏检测</a></td>
+								<td width="63%"></td>
+							</tr>
+						</table>
+					</fieldset>
+					<fieldset>
+						<legend>现场单元监控</legend>
+						<table class="stylized full" style="width:100%;">
+							<thead>
+								<tr>
+									<th width="10%">设备ID</th>
+									<th width="10%">通道</th>
+									<th width="10%">设备类型</th>
+									<th width="15%">检测区域</th>
+									<th width="15%">检测地点</th>
+									<th width="10%">通讯状态</th>
+									<th width="10%">故障次数</th>
+									<th width="10%">报警状态</th>
+									<th width="10%">备注</th>
+								</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>030102</td>
+								<td>3</td>
+								<td>ARCM200</td>
+								<td>办公楼</td>
+								<td>配电室1</td>
+								<td>正常</td>
+								<td>0</td>
+								<td>正常</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<td>030103</td>
+								<td>3</td>
+								<td>ARCM200</td>
+								<td>办公楼</td>
+								<td>配电室2</td>
+								<td>正常</td>
+								<td>0</td>
+								<td>正常</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<td>030104</td>
+								<td>3</td>
+								<td>ARCM200</td>
+								<td>办公楼</td>
+								<td>配电室3</td>
+								<td>正常</td>
+								<td>0</td>
+								<td>正常</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<td>030105</td>
+								<td>3</td>
+								<td>ARCM200</td>
+								<td>生成车间</td>
+								<td>配电室1</td>
+								<td>正常</td>
+								<td>0</td>
+								<td>正常</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<td>030106</td>
+								<td>3</td>
+								<td>ARCM200</td>
+								<td>生产车间</td>
+								<td>配电室6</td>
+								<td>正常</td>
+								<td>0</td>
+								<td>正常</td>
+								<td>0</td>
+							</tr>
+						</tbody>
+						</table>
+					</fieldset>
+				</div>
+				<div id="tabs-2">
+					<p>请点系统tab页</p>
+				</div>
+				<div id="tabs-3">
+					<p>请点系统tab页</p>
+				</div>
+				<div id="tabs-4">
+					<p>请点系统tab页</p>
+				</div>
+			</div>
+		</div>
+		<!-- End of Wrapper -->
+	</div>
+	<!-- End of Page content -->
+	
+	<div>
+		<div style="clear:both;"></div>
+		<hr />
+		<p style="text-align:center;">Copyright &copy; 2014</p>
+	</div>
+	
+	<!-- Scroll to top link -->
+	<a href="#" id="totop">^ 回到顶部</a>
+
+<!-- Admin template javascript load -->
+<script type="text/javascript" SRC="js/administry.js"></script></body>
+</html>

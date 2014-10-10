@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>知识库</title>
+<title>欢迎页</title>
+<!-- We need to emulate IE7 only when we are to use excanvas -->
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<![endif]-->
 <!-- Favicons --> 
 <link rel="shortcut icon" type="image/png" HREF="img/favicons/favicon.png"/>
 <link rel="icon" type="image/png" HREF="img/favicons/favicon.png"/>
@@ -36,6 +40,9 @@ Default colour scheme is blue. Uncomment prefered stylesheet to use it.
 <script type="text/javascript" SRC="js/jquery.validate_pack.js"></script>
 <!-- jQuery popup box -->
 <script type="text/javascript" SRC="js/jquery.nyroModal.pack.js"></script>
+<!-- jQuery graph plugins -->
+<!--[if IE]><script type="text/javascript" src="js/flot/excanvas.min.js"></script><![endif]-->
+<script type="text/javascript" SRC="js/flot/jquery.flot.min.js"></script>
 <!-- Internet Explorer Fixes --> 
 <!--[if IE]>
 <link rel="stylesheet" type="text/css" media="all" href="css/ie.css"/>
@@ -51,16 +58,30 @@ $(document).ready(function(){
 	/* setup navigation, content boxes, etc... */
 	Administry.setup();
 	
-	/* tabs */
-	$("#tabs, #tabs2").tabs();
-	
 	/* progress bar animations - setting initial values */
-	Administry.progress("#progress1", 10, 100);
-	Administry.progress("#progress2", 25, 100);
-	Administry.progress("#progress3", 50, 100);
-	
-	/* <video> support for older browsers through flash player embedding */
-	Administry.videoSupport('video-flash', 'video/video.f4v', 320, 240);
+	Administry.progress("#progress1", 1, 5);
+	Administry.progress("#progress2", 2, 5);
+	Administry.progress("#progress3", 2, 5);
+
+	/* flot graphs */
+	var sales = [{
+		label: 'Total Paid',
+		data: [[1, 0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,900],[8,0],[9,0],[10,0],[11,0],[12,0]]
+	},{
+		label: 'Total Due',
+		data: [[1, 0],[2,0],[3,0],[4,0],[5,0],[6,422.10],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0]]
+	}
+	];
+
+	var plot = $.plot($("#placeholder"), sales, {
+		bars: { show: true, lineWidth: 1 },
+		legend: { position: "nw" },
+		xaxis: { ticks: [[1, "Jan"], [2, "Feb"], [3, "Mar"], [4, "Apr"], [5, "May"], [6, "Jun"], [7, "Jul"], [8, "Aug"], [9, "Sep"], [10, "Oct"], [11, "Nov"], [12, "Dec"]] },
+		yaxis: { min: 0, max: 1000 },
+		grid: { color: "#666" },
+		colors: ["#0a0", "#f00"]			
+    });
+
 
 });
 </script>
@@ -115,10 +136,11 @@ $(document).ready(function(){
 	</header>
 	<!-- End of Header -->
 	
+	
 	<!-- Page title -->
 	<div id="pagetitle">
 		<div class="wrapper">
-			<h1>知识库 &rarr; <span>知识搜索</span></h1>
+			<h1>欢迎界面</h1>
 			<!-- Quick search box -->
 			<form action="" method="get"><input class="" type="text" id="q" name="q" /></form>
 		</div>
@@ -130,51 +152,133 @@ $(document).ready(function(){
 		<!-- Wrapper -->
 		<div class="wrapper">
 				<!-- Left column/section -->
-				<section class="column width6 first" style="width:100%;">
-					<p>
-						<label>输入搜索关键字:</label><br/>
-						<input type="text" id="firstname" class="half" value="中央空调常见问题" name="firstname"/>
-						<input type="submit" class="btn btn-green big" value="搜索"/>
-					</p>
+				<section class="column width6 first">
+				
+					<div class="colgroup leading">
+						<div class="column width3 first">
+							<h3>您好：<a href="#">admin</a>，欢迎登陆物联管控平台</h3>
+							<p>
+								您可以进入相应模块对接入设备进行监控管理操作。
+							</p>
+						</div>
+						<div class="column width3">
+							<h4>最近一次登陆时间</h4>
+							<p>
+								2014年10月1号，14:25<br />
+								登陆IP为：127.0.0.1
+							</p>
+						</div>
+					</div>
 					
-					<div style="margin-top:20px;">
-						<a href="#"><b class="big">家用空调及中央空调常见故障处理方法</b></a>
-						<p style="width:500px;">空调维修是一项专业空调技术工种,看似简单的空调维修工作,在不同的空调维修人员手里有着不同的操作结果。下面简单介绍一下空调常见故障的维修!...</p>
-					<div>
-					<div style="margin-top:20px;">
-						<a href="#"><b class="big">中央空调水系统常见问题及解决办法</b></a>
-						<p style="width:500px;">中央空调为水系统和氟系统,中央空调水系统是目前最为节能的空调系统。不过,中央空调水系统容易发生结垢、堵塞、效率降低等系列问题,影响其正常运行,注意...</p>
-					<div>
-					<div style="margin-top:20px;">
-						<a href="#"><b class="big">中央空调常见故障与解决方法</b></a>
-						<p style="width:500px;">摘要:中央空调原理-工艺-技术篇:介绍了中央空调的六大常见故障的原因以及解决方法。以下内容由买购网整理,提供给您参考。中央空调常见故障与解决方法 1、机器露点...</p>
-					<div>
-					<div style="margin-top:20px;">
-						<a href="#"><b class="big">中央空调常见问题-空调常见问题解答</b></a>
-						<p style="width:500px;">从近几年的市场发展趋势来看,虽然选择中央空调的家庭越来越多,但公众对家用中央空调的疑虑依然存在,以上中央空调常见问题只是截取的一部分,如果消费者对...</p>
-					<div>
-					<div style="margin-top:20px;">
-						<a href="#"><b class="big">中央空调常见故障</b></a>
-						<p style="width:500px;">标签: 空调 中央空调常见故障现象 (1)、漏:指制冷剂泄漏;电气(线路、机体)绝缘破损引起的漏电等。 (2)、堵:指制冷系统的脏堵与冰堵;空气过滤器堵塞;进...</p>
-					<div>
-					<div style="margin-top:20px;">
-						<a href="#"><b class="big">中央空调常见故障与维修方法</b></a>
-						<p style="width:500px;">中央空调常见故障与维修方法 中央空调常见故障现象与解决方法 中央空调常见故障现象有: 1、漏:指制冷剂泄漏;电气(线路、机体)绝缘破损引起的漏电等。 2、堵:指...</p>
-					<div>
-					
-					<hr/>
-					<p>Copyright &copy; 2010</p>
+					<div class="colgroup leading">
+						<div class="column width3 first">
+							<h4>Invoices: <a href="#">10</a></h4>
+							<hr/>
+							<table class="no-style full">
+								<tbody>
+									<tr>
+										<td>Total Invoices</td>
+										<td class="ta-right"><a href="#">10</a></td>
+										<td class="ta-right">1,322.10 &euro;</td>
+									</tr>
+									<tr>
+										<td>Total Paid</td>
+										<td class="ta-right"><a href="#">9</a></td>
+										<td class="ta-right">900.00 &euro;</td>
+									</tr>
+									<tr>
+										<td>Total Due</td>
+										<td class="ta-right"><a href="#">1</a></td>
+										<td class="ta-right">422.10 &euro;</td>
+									</tr>
+									<tr>
+										<td>Total Overdue</td>
+										<td class="ta-right">0</td>
+										<td class="ta-right">0.00 &euro;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="column width3">
+							<h4>Sales: <a href="#">1</a></h4>
+							<hr/>
+							<table class="no-style full">
+								<tbody>
+									<tr>
+										<td>Clients This Month</td>
+										<td class="ta-right"><a href="#">1</a></td>
+										<td class="ta-right"></td>
+									</tr>
+									<tr>
+										<td>Sales This Month</td>
+										<td class="ta-right"><a href="#">9</a></td>
+										<td class="ta-right">900.00 &euro;</td>
+									</tr>
+									<tr>
+										<td>Clients Total</td>
+										<td class="ta-right"><a href="#">5</a></td>
+										<td class="ta-right"></td>
+									</tr>
+									<tr>
+										<td>Sales Total</td>
+										<td class="ta-right"><a href="#">9</a></td>
+										<td class="ta-right">900.00 &euro;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				
+					<div class="colgroup leading">
+						<div class="column width3 first">
+							<h4>Client Stats</h4>
+							<hr/>
+							<table class="no-style full">
+								<tbody>
+									<tr>
+										<td>Active</td>
+										<td class="ta-right">1/5</td>
+										<td><div id="progress1" class="progress full progress-green"><span><b></b></span></div></td>
+									</tr>
+									<tr>
+										<td>Pending</td>
+										<td class="ta-right">2/5</td>
+										<td><div id="progress2" class="progress full progress-blue"><span><b></b></span></div></td>
+									</tr>
+									<tr>
+										<td>Suspended</td>
+										<td class="ta-right">2/5</td>
+										<td><div id="progress3" class="progress full progress-red"><span><b></b></span></div></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="column width3">
+							<h4>Reports</h4>
+							<hr/>
+							<p><b>Sales this year</b></p>
+							<div id="placeholder" style="height:100px"></div>
+						</div>
+					</div>
+					<div class="clear">&nbsp;</div>
+				
 				</section>
 				<!-- End of Left column/section -->
-				
 		</div>
 		<!-- End of Wrapper -->
 	</div>
 	<!-- End of Page content -->
 	
+	<div>
+		<div style="clear:both;"></div>
+		<hr />
+		<p style="text-align:center;">Copyright &copy; 2014</p>
+	</div>
+	
 	<!-- Scroll to top link -->
-	<a href="#" id="totop">^ scroll to top</a>
+	<a href="#" id="totop">^ 回到顶部</a>
 
 <!-- Admin template javascript load -->
-<script type="text/javascript" SRC="js/administry.js"></script></body>
+<script type="text/javascript" SRC="js/administry.js"></script>
+</body>
 </html>
