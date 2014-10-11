@@ -190,7 +190,25 @@ $(document).ready(function(){
 	<div id="page">
 		<!-- Wrapper -->
 		<div class="wrapper">
-		发通知
+			<h3>发通知</h3>
+			<form id="sampleform" method="post" action="#">
+			<p style="position:relative;">
+				<label for="input2">收件人:</label><br/>
+				<input type="text" id="input2" class="half title" value="" name="input2"/>
+				<img src="img/addr.png" width="35" height="42" style="position:absolute;bottom:0;" />
+			</p>
+			<p>
+				<label for="input2">主题:</label><br/>
+				<input type="text" id="input2" class="half title" value="" name="input2"/>
+			</p>
+			<p>
+				<label for="area1">内容:</label><br/>
+				<textarea id="area2" class="medium half" name="area2"></textarea>
+			</p>
+			<p>
+				<input type="submit" class="btn btn-green big" value="发送"/>
+			</p>
+			</form>
 		</div>
 	</div>
 	<!-- End of Page content -->
