@@ -1008,6 +1008,7 @@ a:focus>.sf-sub-indicator,a:hover>.sf-sub-indicator,a:active>.sf-sub-indicator,l
 #page {
 	float:left;
 	width:100%;
+	padding-bottom:50px;
 	background-color:#FFF;
 }
 
@@ -2335,4 +2336,11 @@ div#nyroModalFull div#nyroModalWrapper div#nyroModalContent a.nyroModalNext {
 }
 div#nyroModalFull div#nyroModalWrapper div#nyroModalContent a.nyroModalNext:hover {
 	background-image: url(../img/nyro/next.gif);
+}
+
+/*footer*/
+.footer{
+	clear:both;
+	padding:10px;
+	text-align:center;
 }

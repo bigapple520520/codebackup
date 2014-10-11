@@ -61,7 +61,7 @@ $(document).ready(function(){
 	/* progress bar animations - setting initial values */
 	Administry.progress("#progress1", 1, 5);
 	Administry.progress("#progress2", 2, 5);
-	Administry.progress("#progress3", 2, 5);
+	Administry.progress("#progress3", 3, 5);
 
 	/* flot graphs */
 	var sales = [{
@@ -88,7 +88,7 @@ $(document).ready(function(){
 </head>
 <body>
 	<!-- Header -->
-	<header id="top">
+	<div id="top" style="background:#282828;height:108px;">
 		<div class="wrapper">
 			<!-- Title/Logo - can use text instead of image -->
 			<div id="title"><img height="30" SRC="img/logo.png" /><!--<span>Administry</span> demo--></div>
@@ -102,38 +102,34 @@ $(document).ready(function(){
 			</div>
 			<!-- End of Top navigation -->
 			<!-- Main navigation -->
-			<nav id="menu">
-				<ul class="sf-menu">
-					<li><a HREF="cd_welcome.html">欢迎界面</a></li>
-					<li>
-						<a HREF="#">设备监控</a>
-						<ul>
-							<li>
-								<a HREF="styles.html">设备监视</a>
-							</li>
-							<li>
-								<a href="#">设备控制</a>
-								<ul>
-									<li><a HREF="samples-files.html">中央空调控制</a></li>
-									<li><a HREF="samples-products.html">电梯控制</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-					<li class="current">
-						<a HREF="#">知识库</a>
-						<ul>
-							<li><a HREF="cd_help_list.html">知识搜索</a></li>
-							<li><a HREF="cd_help_add.html">知识添加</a></li>
-						</ul>
-					</li>
-					<li><a HREF="cd_report.html">报表统计</a></li>	
-					<li><a HREF="cd_notice.html">通知中心</a></li>	
-				</ul>
-			</nav>
+			<ul class="sf-menu">
+				<li class="current"><a HREF="cd_welcome.html">欢迎界面</a></li>
+				<li>
+					<a HREF="cd_monitor_hzjc.html">设备监控</a>
+					<ul>
+						<li><a HREF="cd_monitor_hzjc.html">火灾检测</a></li>
+						<li><a href="cd_monitor_zmjc.html">照明监控</a></li>
+					</ul>
+				</li>
+				<li>
+					<a HREF="cd_help_list.html">知识库</a>
+					<ul>
+						<li><a HREF="cd_help_list.html">知识搜索</a></li>
+						<li><a HREF="cd_help_add.html">知识添加</a></li>
+					</ul>
+				</li>
+				<li><a HREF="cd_report.html">报表统计</a></li>	
+				<li>
+					<a HREF="cd_notice_list.html">通知中心</a>
+					<ul>
+						<li><a HREF="cd_notice_list.html">我的通知</a></li>
+						<li><a HREF="cd_notice_add.html">发通知</a></li>
+					</ul>
+				</li>
+			</ul>
 			<!-- End of Main navigation -->
 		</div>
-	</header>
+	</div>
 	<!-- End of Header -->
 	
 	
@@ -152,7 +148,7 @@ $(document).ready(function(){
 		<!-- Wrapper -->
 		<div class="wrapper">
 				<!-- Left column/section -->
-				<section class="column width6 first">
+				<div class="column width6 first">
 				
 					<div class="colgroup leading">
 						<div class="column width3 first">
@@ -164,7 +160,7 @@ $(document).ready(function(){
 						<div class="column width3">
 							<h4>最近一次登陆时间</h4>
 							<p>
-								2014年10月1号，14:25<br />
+								您的上次登录时间是：2014年10月1号，14:25<br />
 								登陆IP为：127.0.0.1
 							</p>
 						</div>
@@ -172,107 +168,97 @@ $(document).ready(function(){
 					
 					<div class="colgroup leading">
 						<div class="column width3 first">
-							<h4>Invoices: <a href="#">10</a></h4>
+							<h4>未读通知: <a href="#">点击到我的通知</a></h4>
 							<hr/>
 							<table class="no-style full">
 								<tbody>
 									<tr>
-										<td>Total Invoices</td>
-										<td class="ta-right"><a href="#">10</a></td>
-										<td class="ta-right">1,322.10 &euro;</td>
+										<td>8号楼的电梯异常，请核查...</td>
+										<td class="ta-right"><a href="#">详情</a></td>
+										<td class="ta-right">2014-10-12 11:25<td>
 									</tr>
 									<tr>
-										<td>Total Paid</td>
-										<td class="ta-right"><a href="#">9</a></td>
-										<td class="ta-right">900.00 &euro;</td>
+										<td>配电室1，值班通知...</td>
+										<td class="ta-right"><a href="#">详情</a></td>
+										<td class="ta-right">2014-13-12 10:25</td>
 									</tr>
 									<tr>
-										<td>Total Due</td>
-										<td class="ta-right"><a href="#">1</a></td>
-										<td class="ta-right">422.10 &euro;</td>
+										<td>9号区路灯问题...</td>
+										<td class="ta-right"><a href="#">详情</a></td>
+										<td class="ta-right">2014-11-12 09:25</td>
 									</tr>
 									<tr>
-										<td>Total Overdue</td>
-										<td class="ta-right">0</td>
-										<td class="ta-right">0.00 &euro;</td>
+										<td>7号区路灯问题...</td>
+										<td class="ta-right"><a href="#">详情</a></td>
+										<td class="ta-right">2014-11-12 09:25</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
 						<div class="column width3">
-							<h4>Sales: <a href="#">1</a></h4>
+							<h4><span style="color:red;">设备警报:</span> <a href="#">点击查看详情</a></h4>
 							<hr/>
 							<table class="no-style full">
 								<tbody>
 									<tr>
-										<td>Clients This Month</td>
-										<td class="ta-right"><a href="#">1</a></td>
-										<td class="ta-right"></td>
+										<td>9号楼中央空调问题异常</td>
+										<td class="ta-right"><a href="#">详情</a></td>
+										<td class="ta-right">2014-11-12 09:25</td>
 									</tr>
 									<tr>
-										<td>Sales This Month</td>
-										<td class="ta-right"><a href="#">9</a></td>
-										<td class="ta-right">900.00 &euro;</td>
+										<td>9号楼中央空调问题异常</td>
+										<td class="ta-right"><a href="#">详情</a></td>
+										<td class="ta-right">2014-11-12 09:25</td>
 									</tr>
 									<tr>
-										<td>Clients Total</td>
-										<td class="ta-right"><a href="#">5</a></td>
-										<td class="ta-right"></td>
+										<td>9号楼中央空调问题异常</td>
+										<td class="ta-right"><a href="#">详情</a></td>
+										<td class="ta-right">2014-11-12 09:25</td>
 									</tr>
 									<tr>
-										<td>Sales Total</td>
-										<td class="ta-right"><a href="#">9</a></td>
-										<td class="ta-right">900.00 &euro;</td>
+										<td>9号楼中央空调问题异常</td>
+										<td class="ta-right"><a href="#">详情</a></td>
+										<td class="ta-right">2014-11-12 09:25</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
 					</div>
-				
-					<div class="colgroup leading">
-						<div class="column width3 first">
-							<h4>Client Stats</h4>
-							<hr/>
-							<table class="no-style full">
-								<tbody>
-									<tr>
-										<td>Active</td>
-										<td class="ta-right">1/5</td>
-										<td><div id="progress1" class="progress full progress-green"><span><b></b></span></div></td>
-									</tr>
-									<tr>
-										<td>Pending</td>
-										<td class="ta-right">2/5</td>
-										<td><div id="progress2" class="progress full progress-blue"><span><b></b></span></div></td>
-									</tr>
-									<tr>
-										<td>Suspended</td>
-										<td class="ta-right">2/5</td>
-										<td><div id="progress3" class="progress full progress-red"><span><b></b></span></div></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="column width3">
-							<h4>Reports</h4>
-							<hr/>
-							<p><b>Sales this year</b></p>
-							<div id="placeholder" style="height:100px"></div>
-						</div>
-					</div>
-					<div class="clear">&nbsp;</div>
-				
-				</section>
+				</div>
 				<!-- End of Left column/section -->
+				
+				<div class="colgroup leading">
+					<div class="column width3 first">
+						<h4>配电室蓄电状态</h4>
+						<hr/>
+						<table class="no-style full">
+							<tbody>
+								<tr>
+									<td>配电室1：</td>
+									<td class="ta-right">1/5</td>
+									<td><div id="progress1" class="progress full progress-green"><span><b></b></span></div></td>
+								</tr>
+								<tr>
+									<td>配电室2：</td>
+									<td class="ta-right">2/5</td>
+									<td><div id="progress2" class="progress full progress-blue"><span><b></b></span></div></td>
+								</tr>
+								<tr>
+									<td>配电室3：</td>
+									<td class="ta-right">3/5</td>
+									<td><div id="progress3" class="progress full progress-red"><span><b></b></span></div></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
 		</div>
 		<!-- End of Wrapper -->
 	</div>
 	<!-- End of Page content -->
 	
-	<div>
-		<div style="clear:both;"></div>
-		<hr />
-		<p style="text-align:center;">Copyright &copy; 2014</p>
+	<div class="footer">
+		<p>Copyright &copy; 2010-2014 杭州创鼎科技</p>
 	</div>
 	
 	<!-- Scroll to top link -->
