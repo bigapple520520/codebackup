@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>登录页</title>
+<title>杭州市教育云物联管控平台</title>
 <!-- Favicons --> 
 <link rel="shortcut icon" type="image/png" HREF="img/favicons/favicon.png"/>
 <link rel="icon" type="image/png" HREF="img/favicons/favicon.png"/>
 <link rel="apple-touch-icon" HREF="img/favicons/apple.png" />
 <!-- Main Stylesheet --> 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/css.css" type="text/css" />
 <!-- Colour Schemes
 Default colour scheme is blue. Uncomment prefered stylesheet to use it.
 <link rel="stylesheet" href="css/brown.css" type="text/css" media="screen" />  
@@ -78,20 +79,17 @@ $(document).ready(function(){
 </head>
 <body>
 	<!-- Header -->
-	<header id="top">
+	<div id="top" style="background:url(img/login_bg.jpg);height:200px;">
 		<div class="wrapper-login">
-			<!-- Title/Logo - can use text instead of image -->
-			<div id="title"><img SRC="img/logo.png" alt="Administry" /><!--<span>Administry</span> demo--></div>
-			<!-- Main navigation -->
-			<nav id="menu">
+			<div id="title" style="height:125px;align:center;">杭州市教育云物联管控平台</div>
+			<div id="menu">
 				<ul class="sf-menu">
-					<li class="current"><a href="#">登录</a></li>
+					<li class="current"><a href="#">请登陆</a></li>
 					<li><a href="#">注册</a></li>
 				</ul>
-			</nav>
-			<!-- End of Main navigation -->
+			</div>
 		</div>
-	</header>
+	</div>
 	<!-- End of Header -->
 	<!-- Page title -->
 	<div id="pagetitle">
@@ -100,25 +98,23 @@ $(document).ready(function(){
 	<!-- End of Page title -->
 	
 	<!-- Page content -->
-	<div id="page">
+	<div id="page" style="height:320px;">
 		<!-- Wrapper -->
 		<div class="wrapper-login">
 				<!-- Login form -->
-				<section class="full">					
+				<div class="full">					
 					
-					<h3>Login</h3>
-					
-					<div class="box box-info">提示：点击登录按钮进行登录</div>
+					<h3>我们的宗旨：节能、安全、环保</h3>
 
 					<form id="loginform" method="post" action="cd_welcome.html">
 
 						<p>
-							<label class="required" for="username">用户名:</label><br/>
+							<label class="required" for="username" style="color:#104E8B;">用户名:</label><br/>
 							<input type="text" id="username" class="full" value="" name="username"/>
 						</p>
 						
 						<p>
-							<label class="required" for="password">密码:</label><br/>
+							<label class="required" for="password" style="color:#104E8B;">密码:</label><br/>
 							<input type="password" id="password" class="full" value="" name="password"/>
 						</p>
 						
@@ -128,7 +124,7 @@ $(document).ready(function(){
 						</p>
 						
 						<p>
-							<input type="submit" class="btn btn-green big" value="登录"/> &nbsp; <a href="javascript: //;" onClick="$('#emailform').slideDown(); return false;">忘记密码</a>
+							<input type="submit" class="btn btn-green big" value="登录"/>
 						</p>
 						<div class="clear">&nbsp;</div>
 
@@ -146,21 +142,19 @@ $(document).ready(function(){
 						</div>
 					</form>
 					
-				</section>
+				</div>
 				<!-- End of login form -->
-				
 		</div>
 		<!-- End of Wrapper -->
 	</div>
 	<!-- End of Page content -->
 	
-	<!-- Page footer -->
-	<footer id="bottom">
-		<div class="wrapper-login">
-			<p>Copyright &copy; 2014 <b></p>
+	<div id="footer" class="footer">
+		<div class="footer-inner">
+			<div class="link"><span>公司网站：</span><a href="http://www.hzcd.net/" target="_blank">杭州创顶科技</a></div>
+			<p>1997-2015 浙江杭州创顶科技有限公司版权所有</p>
 		</div>
-	</footer>
-	<!-- End of Page footer -->
+	</div>
 
 <!-- User interface javascript load -->
 <script type="text/javascript" SRC="js/administry.js"></script>

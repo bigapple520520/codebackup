@@ -1,0 +1,6 @@
+/*---------------footer---------------*/
+#footer{min-width:1000px;background:url(../img/footer_bg.png) repeat-x;height:128px;padding:0;}
+#footer .footer-inner{width:1000px;height:100px;margin:0 auto;color:#dadada;text-align:center;line-height:26px;padding-top:28px;}
+#footer .footer-inner .link span{color:#a1d3ff;}
+#footer .footer-inner .link a{margin:0 10px;font-weight:600;color:#FFF;}
+#footer .footer-inner p{color:#dadada;}
