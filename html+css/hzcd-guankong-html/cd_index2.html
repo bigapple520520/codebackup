@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>杭州市教育云物联管控平台</title>
+<!-- Favicons --> 
+<link rel="shortcut icon" type="image/png" HREF="img/favicons/favicon.png"/>
+<link rel="icon" type="image/png" HREF="img/favicons/favicon.png"/>
+<link rel="apple-touch-icon" HREF="img/favicons/apple.png" />
+<!-- Main Stylesheet --> 
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/css.css" type="text/css" />
+<!-- Colour Schemes
+Default colour scheme is blue. Uncomment prefered stylesheet to use it.
+<link rel="stylesheet" href="css/brown.css" type="text/css" media="screen" />  
+<link rel="stylesheet" href="css/gray.css" type="text/css" media="screen" />  
+<link rel="stylesheet" href="css/green.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="css/pink.css" type="text/css" media="screen" />  
+<link rel="stylesheet" href="css/red.css" type="text/css" media="screen" />
+-->
+<!-- Your Custom Stylesheet --> 
+<link rel="stylesheet" href="css/custom.css" type="text/css" />
+<!--swfobject - needed only if you require <video> tag support for older browsers -->
+<script type="text/javascript" SRC="js/swfobject.js"></script>
+<!-- jQuery with plugins -->
+<script type="text/javascript" SRC="js/jquery-1.4.2.min.js"></script>
+<!-- Could be loaded remotely from Google CDN : <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> -->
+<script type="text/javascript" SRC="js/jquery.ui.core.min.js"></script>
+<script type="text/javascript" SRC="js/jquery.ui.widget.min.js"></script>
+<script type="text/javascript" SRC="js/jquery.ui.tabs.min.js"></script>
+<!-- jQuery tooltips -->
+<script type="text/javascript" SRC="js/jquery.tipTip.min.js"></script>
+<!-- Superfish navigation -->
+<script type="text/javascript" SRC="js/jquery.superfish.min.js"></script>
+<script type="text/javascript" SRC="js/jquery.supersubs.min.js"></script>
+<!-- jQuery form validation -->
+<script type="text/javascript" SRC="js/jquery.validate_pack.js"></script>
+<!-- jQuery popup box -->
+<script type="text/javascript" SRC="js/jquery.nyroModal.pack.js"></script>
+<!-- Internet Explorer Fixes --> 
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" media="all" href="css/ie.css"/>
+<script src="js/html5.js"></script>
+<![endif]-->
+<!--Upgrade MSIE5.5-7 to be compatible with MSIE8: http://ie7-js.googlecode.com/svn/version/2.1(beta3)/IE8.js -->
+<!--[if lt IE 8]>
+<script src="js/IE8.js"></script>
+<![endif]-->
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	/* setup navigation, content boxes, etc... */
+	Administry.setup();
+	
+	// validate signup form on keyup and submit
+	var validator = $("#loginform").validate({
+		rules: {
+			username: "required",
+			password: "required"
+		},
+		messages: {
+			username: "请输入用户名",
+			password: "请输入密码"
+		},
+		// the errorPlacement has to take the layout into account
+		errorPlacement: function(error, element) {
+			error.insertAfter(element.parent().find('label:first'));
+		},
+		// set new class to error-labels to indicate valid fields
+		success: function(label) {
+			// set &nbsp; as text for IE
+			label.html("&nbsp;").addClass("ok");
+		}
+	});
+
+});
+</script>
+</head>
+<body>
+	<!-- Header -->
+	<div id="m_header" style="background:url(img/login_bg.jpg);height:200px;">
+		<div class="wrapper-login">
+			<div id="title" style="height:125px;"><div style="margin-top:40px;">杭州市教育云物联管控平台</div></div>
+			<div id="menu">
+				<ul class="sf-menu">
+					<li class="current"><a href="#">请选择城区</a></li>
+					<li><a href="#">杭州市PM值统计报表</a></li>
+					<li><a href="#">杭州市用电统计报表</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<!-- End of Header -->
+	<!-- Page title -->
+	<div id="pagetitle">
+		<div class="wrapper-login"></div>
+	</div>
+	<!-- End of Page title -->
+	
+	<!-- Page content -->
+	<div id="page" style="height:420px;text-align:center;">
+		<div">
+			<div style="float:left;width:33%;text-align:center;margin-top:20px;" >
+				<div><a href="cd_monitor.html"><img src="img/region_pic.jpg"></a></div>
+			</div>
+			<div style="float:left;width:33%;text-align:center;margin-top:20px;" >
+				<div><img src="img/region_pic.jpg"></div>
+			</div>
+			<div style="float:left;width:33%;text-align:center;margin-top:20px;" >
+				<div><img src="img/region_pic.jpg"></div>
+			</div>
+			<div style="float:left;width:33%;text-align:center;margin-top:20px;" >
+				<div><img src="img/region_pic.jpg"></div>
+			</div>
+			<div style="float:left;width:33%;text-align:center;margin-top:20px;" >
+				<div><img src="img/region_pic.jpg"></div>
+			</div>
+			<div style="float:left;width:33%;text-align:center;margin-top:20px;" >
+				<div><img src="img/region_pic.jpg"></div>
+			</div>
+		</div>
+	</div>
+	<!-- End of Page content -->
+	
+	<div id="m_footer">
+		<p>Copyright © 2010-2014 杭州创鼎科技&nbsp;&#8226;&nbsp;
+			<a href="http://www.hzcd.net/" target="_blank">公司网站首页</a>
+		</p>
+	</div>
+
+<!-- User interface javascript load -->
+<script type="text/javascript" SRC="js/administry.js"></script>
+</body>
+</html>

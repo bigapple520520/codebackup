@@ -2338,9 +2338,26 @@ div#nyroModalFull div#nyroModalWrapper div#nyroModalContent a.nyroModalNext:hove
 	background-image: url(../img/nyro/next.gif);
 }
 
-/*footer*/
-.footer{
+/*-----------------header-----------------*/
+#m_header{
+	height: 200px;
+	background:url(../img/login_bg.jpg);
+}
+
+/*---------------footer---------------*/
+#m_footer{
+	min-width:1000px;
+	background:url(../img/footer_bg.png) repeat-x;
+	height:40px;
+	padding:0;
 	clear:both;
 	padding:10px;
 	text-align:center;
+}
+#m_footer p{
+	color:#dadada;
+}
+#m_footer p a{
+	font-weight:600;
+	color:#a1d3ff;
 }
