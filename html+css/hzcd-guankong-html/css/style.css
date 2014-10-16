@@ -949,6 +949,7 @@ a:focus>.sf-sub-indicator,a:hover>.sf-sub-indicator,a:active>.sf-sub-indicator,l
 	letter-spacing:-0.02em;
 	padding:20px 0 22px;
 	text-shadow:1px 1px 3px #111;
+	height:126px;
 }
 #title span {
 	color: #FFC806; 
@@ -2342,6 +2343,7 @@ div#nyroModalFull div#nyroModalWrapper div#nyroModalContent a.nyroModalNext:hove
 #m_header{
 	height: 200px;
 	background:url(../img/login_bg.jpg);
+	background-size:100% auto;
 }
 
 /*---------------footer---------------*/

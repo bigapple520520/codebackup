@@ -1,0 +1,339 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>杭州市教育云物联管控平台</title>
+<!-- Favicons --> 
+<link rel="shortcut icon" type="image/png" HREF="img/favicons/favicon.png"/>
+<link rel="icon" type="image/png" HREF="img/favicons/favicon.png"/>
+<link rel="apple-touch-icon" HREF="img/favicons/apple.png" />
+<!-- Main Stylesheet --> 
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/css.css" type="text/css" />
+<!-- Colour Schemes
+Default colour scheme is blue. Uncomment prefered stylesheet to use it.
+<link rel="stylesheet" href="css/brown.css" type="text/css" media="screen" />  
+<link rel="stylesheet" href="css/gray.css" type="text/css" media="screen" />  
+<link rel="stylesheet" href="css/green.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="css/pink.css" type="text/css" media="screen" />  
+<link rel="stylesheet" href="css/red.css" type="text/css" media="screen" />
+-->
+<!-- Your Custom Stylesheet --> 
+<link rel="stylesheet" href="css/custom.css" type="text/css" />
+<!--swfobject - needed only if you require <video> tag support for older browsers -->
+<script type="text/javascript" SRC="js/swfobject.js"></script>
+<!-- jQuery with plugins -->
+<script type="text/javascript" SRC="js/jquery-1.4.2.min.js"></script>
+<!-- Could be loaded remotely from Google CDN : <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> -->
+<script type="text/javascript" SRC="js/jquery.ui.core.min.js"></script>
+<script type="text/javascript" SRC="js/jquery.ui.widget.min.js"></script>
+<script type="text/javascript" SRC="js/jquery.ui.tabs.min.js"></script>
+<!-- jQuery tooltips -->
+<script type="text/javascript" SRC="js/jquery.tipTip.min.js"></script>
+<!-- Superfish navigation -->
+<script type="text/javascript" SRC="js/jquery.superfish.min.js"></script>
+<script type="text/javascript" SRC="js/jquery.supersubs.min.js"></script>
+<!-- jQuery form validation -->
+<script type="text/javascript" SRC="js/jquery.validate_pack.js"></script>
+<!-- jQuery popup box -->
+<script type="text/javascript" SRC="js/jquery.nyroModal.pack.js"></script>
+<!-- Internet Explorer Fixes --> 
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" media="all" href="css/ie.css"/>
+<script src="js/html5.js"></script>
+<![endif]-->
+<!--Upgrade MSIE5.5-7 to be compatible with MSIE8: http://ie7-js.googlecode.com/svn/version/2.1(beta3)/IE8.js -->
+<!--[if lt IE 8]>
+<script src="js/IE8.js"></script>
+<![endif]-->
+<script src="js/echarts-plain.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	/* setup navigation, content boxes, etc... */
+	Administry.setup();
+	
+	// validate signup form on keyup and submit
+	var validator = $("#loginform").validate({
+		rules: {
+			username: "required",
+			password: "required"
+		},
+		messages: {
+			username: "请输入用户名",
+			password: "请输入密码"
+		},
+		// the errorPlacement has to take the layout into account
+		errorPlacement: function(error, element) {
+			error.insertAfter(element.parent().find('label:first'));
+		},
+		// set new class to error-labels to indicate valid fields
+		success: function(label) {
+			// set &nbsp; as text for IE
+			label.html("&nbsp;").addClass("ok");
+		}
+	});
+
+});
+</script>
+</head>
+<body>
+	<!-- Header -->
+	<div id="m_header">
+		<div class="wrapper-login">
+			<div id="title"><div style="margin-top:40px;">杭州市西湖区物联管控平台</div></div>
+			<div id="menu">
+				<ul class="sf-menu">
+					<li><a href="cd_index2.html">请选择校区</a></li>
+					<li class="current"><a href="cd_index2_pm_tj.html">杭州市PM值统计报表</a></li>
+					<li><a href="cd_index2_yongdian_tj.html">杭州市用电统计报表</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<!-- End of Header -->
+	<!-- Page title -->
+	<div id="pagetitle">
+		<div class="wrapper-login"></div>
+	</div>
+	<!-- End of Page title -->
+	
+	<!-- Page content -->
+	<div id="page" style="text-align:center;">
+		<div style="float:left;width:50%;">
+			<h3>2013年<a href="#">学军小学</a>PM值统计</h3>
+			<div id="main1" style="height:400px"></div>
+		</div>
+		<div style="float:left;width:50%;">
+			<h3>2013年<a href="#">行知小学</a>PM值统计</h3>
+			<div id="main2" style="height:400px"></div>
+		</div>
+		<div style="float:left;width:100%;">
+			<h3>2013年<a href="#">西湖区</a>各小学PM2.5值对比统计</h3>
+			<div id="main3" style="height:400px"></div>
+		</div>
+	</div>
+	<!-- End of Page content -->
+	
+	<div id="m_footer">
+		<p>Copyright © 2010-2014 杭州创鼎科技&nbsp;&#8226;&nbsp;
+			<a href="http://www.hzcd.net/" target="_blank">公司网站首页</a>
+		</p>
+	</div>
+
+<!-- User interface javascript load -->
+<script type="text/javascript" SRC="js/administry.js"></script>
+</body>
+</html>
+<script type="text/javascript">
+initChart1();
+initChart2();
+initChart3();
+function initChart1(){
+	// 基于准备好的dom，初始化echarts图表 
+	var	option = {
+		title : {
+		},
+		tooltip : {
+			trigger: 'axis'
+		},
+		legend: {
+			data:['PM2.5值','PM10值']
+		},
+		toolbox: {
+			show : true,
+			feature : {
+				mark : {show: true},
+				dataView : {show: true, readOnly: false},
+				magicType : {show: true, type: ['line', 'bar']},
+				restore : {show: true},
+				saveAsImage : {show: true}
+			}
+		},
+		calculable : true,
+		xAxis : [
+			{
+				type : 'category',
+				boundaryGap : false,
+				data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+			}
+		],
+		yAxis : [
+			{
+				type : 'value',
+				axisLabel : {
+					formatter: '{value}'
+				}
+			}
+		],
+		series : [
+			{
+				name:'PM2.5值',
+				type:'line',
+				data:[99, 106, 145, 132, 111, 108, 87, 140, 130, 132, 126, 139],
+				markPoint : {
+					data : [
+						{type : 'max', name: '最大值'},
+						{type : 'min', name: '最小值'}
+					]
+				},
+				markLine : {
+					data : [
+						{type : 'average', name: '平均值'}
+					]
+				}
+			},
+			{
+				name:'PM10值',
+				type:'line',
+				data:[100, 146, 175, 152, 131, 138, 99, 148, 150, 172, 156, 166],
+				markPoint : {
+					data : [
+						{name : '周最低', value : -2, xAxis: 1, yAxis: -1.5}
+					]
+				},
+				markLine : {
+					data : [
+						{type : 'average', name : '平均值'}
+					]
+				}
+			}
+		]
+	};
+                    
+	// 为echarts对象加载数据 
+	var myChart = echarts.init(document.getElementById('main1'));
+	myChart.setOption(option); 
+}
+function initChart2(){
+	// 基于准备好的dom，初始化echarts图表 
+	var	option = {
+		title : {
+		},
+		tooltip : {
+			trigger: 'axis'
+		},
+		legend: {
+			data:['PM2.5值','PM10值']
+		},
+		toolbox: {
+			show : true,
+			feature : {
+				mark : {show: true},
+				dataView : {show: true, readOnly: false},
+				magicType : {show: true, type: ['line', 'bar']},
+				restore : {show: true},
+				saveAsImage : {show: true}
+			}
+		},
+		calculable : true,
+		xAxis : [
+			{
+				type : 'category',
+				boundaryGap : false,
+				data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+			}
+		],
+		yAxis : [
+			{
+				type : 'value',
+				axisLabel : {
+					formatter: '{value}'
+				}
+			}
+		],
+		series : [
+			{
+				name:'PM2.5值',
+				type:'line',
+				data:[90, 136, 143, 122, 100, 118, 86, 122, 132, 108, 109, 100],
+				markPoint : {
+					data : [
+						{type : 'max', name: '最大值'},
+						{type : 'min', name: '最小值'}
+					]
+				},
+				markLine : {
+					data : [
+						{type : 'average', name: '平均值'}
+					]
+				}
+			},
+			{
+				name:'PM10值',
+				type:'line',
+				data:[101, 146, 135, 154, 130, 138, 100, 140, 155, 127, 123, 154],
+				markPoint : {
+					data : [
+						{name : '周最低', value : -2, xAxis: 1, yAxis: -1.5}
+					]
+				},
+				markLine : {
+					data : [
+						{type : 'average', name : '平均值'}
+					]
+				}
+			}
+		]
+	};
+                    
+	// 为echarts对象加载数据 
+	var myChart = echarts.init(document.getElementById('main2'));
+	myChart.setOption(option); 
+}
+function initChart3(){
+	var myChart3 = echarts.init(document.getElementById('main3')); 
+	option3 = {
+		tooltip : {
+			trigger: 'axis'
+		},
+		legend: {
+			data:['学军小学','行知小学']
+		},
+		toolbox: {
+			show : true,
+			feature : {
+				mark : {show: true},
+				dataView : {show: true, readOnly: false},
+				magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+				restore : {show: true},
+				saveAsImage : {show: true}
+			}
+		},
+		calculable : true,
+		xAxis : [
+			{
+				type : 'category',
+				boundaryGap : false,
+				data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+			}
+		],
+		yAxis : [
+			{
+				type : 'value',
+				name : 'PM2.5值',
+				axisLabel : {
+					formatter: '{value}'
+				}
+			}
+		],
+		series : [
+			{
+				name:'学军小学',
+				type:'line',
+				stack: '总量',
+				data:[99, 106, 145, 132, 111, 108, 87, 140, 130, 132, 126, 139]
+			},
+			{
+				name:'行知小学',
+				type:'line',
+				stack: '总量',
+				data:[90, 136, 143, 122, 100, 118, 86, 122, 132, 108, 109, 100]
+			}
+		]
+	};
+	myChart3.setOption(option3);
+}
+</script>
