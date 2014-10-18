@@ -82,12 +82,13 @@ $(document).ready(function(){
 	<!-- Header -->
 	<div id="m_header">
 		<div class="wrapper-login">
-			<div id="title"><div style="margin-top:40px;">杭州市西湖区物联管控平台</div></div>
+			<div id="title"><div style="margin-top:40px;">西湖区设备管理</div></div>
 			<div id="menu">
 				<ul class="sf-menu">
 					<li><a href="cd_index2.html">请选择校区</a></li>
-					<li class="current"><a href="cd_index2_pm_tj.html">杭州市PM值统计报表</a></li>
-					<li><a href="cd_index2_yongdian_tj.html">杭州市用电统计报表</a></li>
+					<li class="current"><a href="cd_index2_pm_tj.html">PM值统计</a></li>
+					<li><a href="cd_index2_yongdian_tj.html">用电统计</a></li>
+					<li><a HREF="cd_index1.html">返回上一级</a></li>
 				</ul>
 			</div>
 		</div>
@@ -128,10 +129,10 @@ $(document).ready(function(){
 </body>
 </html>
 <script type="text/javascript">
-initChart1();
-initChart2();
-initChart3();
-function initChart1(){
+init1();
+init2();
+init3();
+function init1(){
 	// 基于准备好的dom，初始化echarts图表 
 	var	option = {
 		title : {
@@ -207,7 +208,7 @@ function initChart1(){
 	var myChart = echarts.init(document.getElementById('main1'));
 	myChart.setOption(option); 
 }
-function initChart2(){
+function init2(){
 	// 基于准备好的dom，初始化echarts图表 
 	var	option = {
 		title : {
@@ -283,9 +284,8 @@ function initChart2(){
 	var myChart = echarts.init(document.getElementById('main2'));
 	myChart.setOption(option); 
 }
-function initChart3(){
-	var myChart3 = echarts.init(document.getElementById('main3')); 
-	option3 = {
+function init3(){
+	option = {
 		tooltip : {
 			trigger: 'axis'
 		},
@@ -334,6 +334,7 @@ function initChart3(){
 			}
 		]
 	};
-	myChart3.setOption(option3);
+	var myChart = echarts.init(document.getElementById('main3')); 
+	myChart.setOption(option);
 }
 </script>

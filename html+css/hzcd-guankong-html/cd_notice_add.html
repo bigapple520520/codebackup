@@ -131,29 +131,12 @@ $(document).ready(function(){
 </head>
 <body>
 	<!-- Header -->
-	<div id="top" style="background:#282828;height:108px;">
-		<div class="wrapper">
-			<!-- Title/Logo - can use text instead of image -->
-			<div id="title"><img height="30" SRC="img/logo.png" /><!--<span>Administry</span> demo--></div>
-			<!-- Top navigation -->
-			<div id="topnav">
-				<a href="#"><img class="avatar" SRC="img/user_32.png" alt="" /></a>
-				您的登陆账号： <b>admin</b>
-				<span>|</span> <a href="#">设置</a>
-				<span>|</span> <a href="#">退出</a><br />
-				<small>您有<a href="#" class="high"><b>1</b> 条新消息!</a></small>
-			</div>
-			<!-- End of Top navigation -->
-			<!-- Main navigation -->
-			<ul class="sf-menu">
-				<li><a HREF="cd_welcome.html">欢迎界面</a></li>
-				<li>
-					<a HREF="cd_monitor_hzjc.html">设备监控</a>
-					<ul>
-						<li><a HREF="cd_monitor_hzjc.html">火灾检测</a></li>
-						<li><a href="cd_monitor_zmjc.html">照明监控</a></li>
-					</ul>
-				</li>
+	<div id="m_header">
+		<div class="wrapper-login">
+			<div id="title"><div style="margin-top:40px;">学军小学设备管理</div></div>
+			<div id="menu">
+				<ul class="sf-menu">
+				<li><a HREF="cd_monitor.html">设备管理</a></li>
 				<li>
 					<a HREF="cd_help_list.html">知识库</a>
 					<ul>
@@ -161,7 +144,6 @@ $(document).ready(function(){
 						<li><a HREF="cd_help_add.html">知识添加</a></li>
 					</ul>
 				</li>
-				<li><a HREF="cd_report.html">报表统计</a></li>	
 				<li class="current">
 					<a HREF="cd_notice_list.html">通知中心</a>
 					<ul>
@@ -169,11 +151,16 @@ $(document).ready(function(){
 						<li><a HREF="cd_notice_add.html">发通知</a></li>
 					</ul>
 				</li>
+				<li><a HREF="cd_index2.html">返回上一级</a></li>
 			</ul>
-			<!-- End of Main navigation -->
+			</div>
+		</div>
+		<div id="topnav" style="margin-right:20px;">
+			<span>您的登陆账号： <b>admin</b></span>
+			<span>|</span> <a href="#">退出</a><br />
+			<span>您有<a href="#" ><b>1</b>条新消息!</a></span>
 		</div>
 	</div>
-	<!-- End of Header -->
 	
 	
 	<!-- Page title -->
@@ -213,8 +200,10 @@ $(document).ready(function(){
 	</div>
 	<!-- End of Page content -->
 	
-	<div class="footer">
-		<p>Copyright &copy; 2010-2014 杭州创鼎科技</p>
+	<div id="m_footer">
+		<p>Copyright © 2010-2014 杭州创鼎科技&nbsp;&#8226;&nbsp;
+			<a href="http://www.hzcd.net/" target="_blank">公司网站首页</a>
+		</p>
 	</div>
 	<!-- Scroll to top link -->
 	<a href="#" id="totop">^ scroll to top</a>
