@@ -2363,3 +2363,7 @@ div#nyroModalFull div#nyroModalWrapper div#nyroModalContent a.nyroModalNext:hove
 	font-weight:600;
 	color:#a1d3ff;
 }
+
+.monitor_img{
+	border:solid 2px #5D9ADF;
+}
