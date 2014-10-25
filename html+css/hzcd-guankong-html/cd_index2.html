@@ -47,49 +47,28 @@ Default colour scheme is blue. Uncomment prefered stylesheet to use it.
 <script src="js/IE8.js"></script>
 <![endif]-->
 <script type="text/javascript">
-
-$(document).ready(function(){
-	
-	/* setup navigation, content boxes, etc... */
-	Administry.setup();
-	
-	// validate signup form on keyup and submit
-	var validator = $("#loginform").validate({
-		rules: {
-			username: "required",
-			password: "required"
-		},
-		messages: {
-			username: "请输入用户名",
-			password: "请输入密码"
-		},
-		// the errorPlacement has to take the layout into account
-		errorPlacement: function(error, element) {
-			error.insertAfter(element.parent().find('label:first'));
-		},
-		// set new class to error-labels to indicate valid fields
-		success: function(label) {
-			// set &nbsp; as text for IE
-			label.html("&nbsp;").addClass("ok");
-		}
-	});
-
-});
 </script>
 </head>
 <body>
 	<!-- Header -->
 	<div id="m_header">
 		<div class="wrapper-login">
-			<div id="title"><div style="margin-top:40px;">西湖区设备管理</div></div>
+			<div id="title"><div style="margin-top:40px;">西湖区校园物联网</div></div>
 			<div id="menu">
 				<ul class="sf-menu">
-					<li class="current"><a href="cd_index2.html">请选择校区</a></li>
+					<li class="current"><a href="#">安全管理</a></li>
+					<li><a href="#">绩效考核</a></li>
+					<li><a href="#">通知管理</a></li>
 					<li><a href="cd_index2_pm_tj.html">PM值统计</a></li>
 					<li><a href="cd_index2_yongdian_tj.html">用电统计</a></li>
 					<li><a HREF="cd_index1.html">返回上一级</a></li>
 				</ul>
 			</div>
+		</div>
+		<div id="topnav" style="margin-right:20px;">
+			<span>您的登陆账号： <b>admin</b></span>
+			<span>|</span> <a href="#">退出</a><br />
+			<span>您有<a href="#" ><b>1</b>条新消息!</a></span>
 		</div>
 	</div>
 	
@@ -102,10 +81,17 @@ $(document).ready(function(){
 	
 	<!-- Page content -->
 	<div id="page" style="text-align:center;">
+		<!--搜索框-->
+		<div class="search_layout">
+			<form method="get" action="cd_monitor.html">
+				<input type="text" class="input_search">
+				<input type="submit" value="查找一下" class="btn_search">
+			</form>
+		</div>
 		<div class="wrapper">
 			<div style="float:left;width:33%;text-align:center;margin-top:20px;" >
 				<div><a href="cd_monitor.html"><img width="150" height="150" src="img/school/xuejun.jpg"></a></div>
-				<div><a href="cd_index2.html">学军小学</a></div>
+				<div><a href="cd_monitor.html">学军小学</a></div>
 			</div>
 			<div style="float:left;width:33%;text-align:center;margin-top:20px;" >
 				<div><img width="150" height="150" src="img/school/xingzhi.jpg"></div>
