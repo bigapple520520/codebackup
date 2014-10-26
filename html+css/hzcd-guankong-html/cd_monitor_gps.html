@@ -73,12 +73,29 @@ $(document).ready(function(){
 			<div id="title"><div style="margin-top:40px;">学军小学设备管理</div></div>
 			<div id="menu">
 				<ul class="sf-menu">
-				<li class="current"><a HREF="cd_monitor.html">设备管理</a></li>
+				<li class="current">
+					<a HREF="cd_monitor.html">设备管理</a>
+					<ul>
+						<li><a HREF="#">设备监控</a></li>
+						<li><a HREF="#">设备远程控制</a></li>
+						<li><a HREF="#">设备资产管理</a></li>
+						<li><a HREF="#">设备联动管理</a></li>
+					</ul>
+				</li>
 				<li>
-					<a HREF="cd_help_list.html">知识库</a>
+					<a HREF="cd_help_list.html">智慧知识库</a>
 					<ul>
 						<li><a HREF="cd_help_list.html">知识搜索</a></li>
 						<li><a HREF="cd_help_add.html">知识添加</a></li>
+					</ul>
+				</li>
+				<li><a HREF="#">日程管理</a></li>
+				<li>
+					<a HREF="cd_notice_list.html">多媒体客服</a>
+					<ul>
+						<li><a HREF="cd_notice_list.html">电话</a></li>
+						<li><a HREF="cd_notice_add.html">QQ</a></li>
+						<li><a HREF="cd_notice_add.html">微信及微博</a></li>
 					</ul>
 				</li>
 				<li>
@@ -112,6 +129,19 @@ $(document).ready(function(){
 	
 	<!-- Page content -->
 	<div id="page" style="height:400px;">
+		<div id="m_menu" class="page_left">
+			<ul>
+				<li><a href="cd_monitor_zmjc.html">智能照明</a></li>
+				<li><a href="cd_monitor_hzjc.html">烟气探测与火灾报警</a></li>
+				<li><a href="cd_monitor_gps.html">GPS、RFID定位识别</a></li>
+				<li><a href="cd_monitor_zhongyang_kt.html">中央空调</a></li>
+				<li><a href="cd_monitor_dianti_jk.html">电梯监控</a></li>
+				<li><a href="cd_monitor_pm_jk.html">PM2.5及有毒气体检测</a></li>
+				<li><a href="#">校园安防</a></li>
+			</ul>
+		</div>
+		<div id="showMap" class="page_right" style="height:400px;">
+		</div>
 	</div>
 	<!-- End of Page content -->
 	
@@ -128,7 +158,7 @@ $(document).ready(function(){
 <script type="text/javascript" SRC="js/administry.js"></script></body>
 </html>
 <script>
-var map = new BMap.Map("page");          // 创建地图实例  
+var map = new BMap.Map("showMap");          // 创建地图实例  
 map.centerAndZoom(new BMap.Point(120.085, 30.287), 11);
 map.clearOverlays(); 
 map.enableScrollWheelZoom();
