@@ -1,0 +1,11 @@
+﻿.details {
+	padding: 4% 10% 4% 10%;
+}
+.details h2{
+	font-size: 20px;
+	color: #808B8D;
+	font-weight: normal;
+}
+.details img{
+	width: 100%;
+}

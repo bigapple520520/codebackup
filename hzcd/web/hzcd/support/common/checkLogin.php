@@ -1,0 +1,1 @@
+<?php session_start();if(!isset($_SESSION["admin"]) || !$_SESSION["admin"]){  header("Location:/support/index.php?errorMsg=please login in first!");}?>

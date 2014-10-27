@@ -1,0 +1,52 @@
+﻿.infolist {
+	padding: 4% 10% 4% 10%;
+}
+
+.blog_list{
+	padding: 0px 0px 40px 0;
+}
+
+.blog_date{
+	float: left;
+	width: 10%;
+	position: relative;
+}
+
+.blog_date .date{
+	background: #F5F5F5;
+	text-align: center;
+	display: block;
+	color: #808B8D;
+	font-size: 20px;
+	padding: 15px 0px 1px 0px;
+}
+
+.blog_left{
+	float: right;
+	margin-left: 4%;
+	width: 86%;
+}
+
+.blog_left img{
+	max-width: 100%;
+	height: 200px;
+}
+
+.blog_left span{
+	font-size: 14px;
+	color: #808B8D;
+	display: block;
+	text-transform: capitalize;
+}
+
+.blog_left span a{
+	color: #81BFBE;
+}
+.blog_left h4 a{
+	color: #808B8D;
+}
+
+.blog_left h4 a:hover{
+    color: #E55846;
+}
+
